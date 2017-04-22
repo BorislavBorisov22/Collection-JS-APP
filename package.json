@@ -12,6 +12,7 @@
     "express": "^4.15.2",
     "handlebars": "^4.0.6",
     "jquery": "^3.2.1",
-    "systemjs": "^0.20.12"
+    "systemjs": "^0.20.12",
+    "systemjs-plugin-babel": "0.0.21"
   }
 }

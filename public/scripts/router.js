@@ -14,6 +14,7 @@
           };
 
           this._routes.push(routeObj);
+
           return this;
       }
 

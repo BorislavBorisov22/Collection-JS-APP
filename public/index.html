@@ -6,6 +6,7 @@
     <title>FUT Collection</title>
     <link rel="stylesheet" href="./scripts/bower_components\bootstrap\dist\css/bootstrap.css">
     <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./scripts/bower_components/toastr/toastr.css">
 </head>
 
 <body>
@@ -21,23 +22,27 @@
                     <li><a href="#/album">My Album</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#/go-to-login"><span class="glyphicon glyphicon-user"></span>Sign in/ Register</a></li>
+                    <li><a href="#/go-to-login"><span class="glyphicon glyphicon-user"></span>Sign up</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
+    <main id="container">
+
+    </main>
+
     <!-- External libraries -->
     <script src="./scripts/node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./scripts/node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="./scripts/node_modules/systemjs/dist/system.js"></script>
+    <script src="./scripts/bower_components/toastr/toastr.js"></script>
 
     <!--SystemJS configs -->
     <script src="./scripts/configs/systemjs-config.js"></script>
 
     <script src="./scripts/main.js"></script>
     <script>
-        System.import('main');
     </script>
 </body>
 

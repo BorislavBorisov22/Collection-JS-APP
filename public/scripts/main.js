@@ -1,4 +1,5 @@
 import { Router } from 'router';
+import { userLogin } from 'login-controller';
 
 function getPlayers(filterOptions) {
     return new Promise((resolve, reject) => {
@@ -31,30 +32,32 @@ function getTemplate(url) {
 }
 
 const router = new Router();
-router.on('#/marketplace', function() {
-    Promise
-        .all([
-            getPlayers({
-                page: 1,
-                quality: 'gold,rare_gold',
-            }),
-            getTemplate('/templates/player-card.html')
-        ])
-        .then((data) => {
-            const players = data[0];
-            const template = data[1];
 
-            // Fix name differences
-            players.forEach((player) => {
-                if (!player.commonName) {
-                    player.commonName = player.firstName + ' ' + player.lastName;
-                }
+router.on('#/go-to-login', userLogin)
+    .on('#/marketplace', function(context) {
+        Promise
+            .all([
+                getPlayers({
+                    page: 1,
+                    quality: 'gold,rare_gold',
+                }),
+                getTemplate('/templates/player-card.html')
+            ])
+            .then((data) => {
+                const players = data[0];
+                const template = data[1];
+
+                // Fix name differences
+                players.forEach((player) => {
+                    if (!player.commonName) {
+                        player.commonName = player.firstName + ' ' + player.lastName;
+                    }
+                });
+
+                $('#container').html(template({
+                    players: players
+                }));
             });
-
-            $(document.body).append(template({
-                players: players
-            }));
-        });
-});
+    });
 
 router.run('#/home');
