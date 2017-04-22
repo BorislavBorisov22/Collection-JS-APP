@@ -57,4 +57,4 @@ router.on('#/marketplace', function() {
         });
 });
 
-router.run();
+router.run('#/home');

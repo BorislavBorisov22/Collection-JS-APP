@@ -105,14 +105,15 @@
           return queryParams;
       }
 
-      run() {
+      run(initialHash) {
+
           const that = this;
           $(window).on('hashchange', function() {
               that.navigate();
           });
 
           $(() => {
-              location.hash = '#/';
+              location.hash = initialHash;
               that.navigate();
           });
       }
