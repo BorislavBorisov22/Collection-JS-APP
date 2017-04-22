@@ -1,0 +1,14 @@
+body {
+	font-family: sans-serif;
+}
+
+.player-card {
+	display: inline-block;
+	text-align: center;
+	margin: 5px;
+	padding: 5px;
+}
+
+.player-card .headshot-img {
+	display: block;
+}
