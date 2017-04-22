@@ -1,0 +1,21 @@
+{
+  "name": "fut-collection",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Borislav Borisov <borislavborisov22@abv.bg>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/OnocentaurTeam/Collection-JS-APP",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "toastr": "^2.1.3"
+  }
+}
