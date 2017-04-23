@@ -1,7 +1,7 @@
 import { Router } from 'router';
 import { userController } from 'user-controller';
 import { playersController } from 'players-controller';
-import { userData } from 'data';
+import { userData } from 'user-data';
 
 const router = new Router();
 
@@ -27,4 +27,6 @@ router.on('#/login', userController.login)
     })
     .on('#/marketplace', playersController.show);
 
-router.run('#/home');
+// keep location after reload
+const currentHash = location.hash || '#/home';
+router.run(currentHash);

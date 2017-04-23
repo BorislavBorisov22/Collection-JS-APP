@@ -1,123 +1,119 @@
-  'use strict';
+'use strict';
 
-  class Router {
+class Router {
+    constructor() {
+        this._routes = [];
+    }
 
-      constructor() {
-          this._routes = [];
-      }
+    on(route, callback) {
+        const routeObj = {
+            route,
+            callback
+        };
 
-      on(route, callback) {
+        this._routes.push(routeObj);
 
-          const routeObj = {
-              route,
-              callback
-          };
+        return this;
+    }
 
-          this._routes.push(routeObj);
+    navigate() {
+        let params;
+        const len = this._routes.length;
+        for (let i = 0; i < len; i += 1) {
+            const params = this.matchUrl(this._routes[i].route);
 
-          return this;
-      }
+            if (params) {
+                const context = {
+                    params: params,
+                    redirect: this.redirect
+                };
 
-      navigate() {
-          let params;
-          const len = this._routes.length;
-          for (let i = 0; i < len; i += 1) {
-              const params = this.matchUrl(this._routes[i].route);
+                this._routes[i].callback(context);
+                break;
+            }
+        }
+    }
 
-              if (params) {
-                  const context = {
-                      params: params,
-                      redirect: this.redirect
-                  };
+    matchUrl(targetUrl) {
+        const actualUrl = location.hash;
 
-                  this._routes[i].callback(context);
-                  break;
-              }
-          }
-      }
+        return this.areUrlsMatching(targetUrl, actualUrl);
+    }
 
-      matchUrl(targetUrl) {
-          const actualUrl = location.hash;
+    areUrlsMatching(targetUrl, actualUrl) {
+        const targetUrlParts = targetUrl.split('/');
+        const actualUrlParts = actualUrl.split('/');
 
-          return this.areUrlsMatching(targetUrl, actualUrl);
-      }
+        if (targetUrlParts.length !== actualUrlParts.length) {
+            return false;
+        }
 
-      areUrlsMatching(targetUrl, actualUrl) {
-          const targetUrlParts = targetUrl.split('/');
-          const actualUrlParts = actualUrl.split('/');
+        const len = targetUrlParts.length;
+        const params = {};
+        for (let i = 0; i < len; i += 1) {
+            if (actualUrlParts[i].indexOf('?') >= 0) {
+                const queryParams = this._getQueryParams(targetUrlParts[i], actualUrlParts[i]);
 
-          if (targetUrlParts.length !== actualUrlParts.length) {
-              return false;
-          }
+                if (!queryParams) {
+                    false;
+                }
 
-          const len = targetUrlParts.length;
-          const params = {};
-          for (let i = 0; i < len; i += 1) {
-              if (actualUrlParts[i].indexOf('?') >= 0) {
-                  const queryParams = this._getQueryParams(targetUrlParts[i], actualUrlParts[i]);
+                params["queryParams"] = queryParams;
 
-                  if (!queryParams) {
-                      false;
-                  }
+            } else if (targetUrlParts[i].indexOf(':') < 0) {
 
-                  params["queryParams"] = queryParams;
+                if (targetUrlParts[i] !== actualUrlParts[i]) {
+                    return false;
+                }
+            } else {
 
-              } else if (targetUrlParts[i].indexOf(':') < 0) {
+                const currentParam = actualUrlParts[i];
+                const paramName = targetUrlParts[i].substring(1);
 
-                  if (targetUrlParts[i] !== actualUrlParts[i]) {
-                      return false;
-                  }
-              } else {
+                params[paramName] = currentParam;
+            }
+        }
 
-                  const currentParam = actualUrlParts[i];
-                  const paramName = targetUrlParts[i].substring(1);
+        return params;
+    }
 
-                  params[paramName] = currentParam;
-              }
-          }
+    redirect(newHash) {
+        location.hash = newHash;
+    }
 
-          return params;
-      }
+    _getQueryParams(targetUrl, actualUrl) {
+        const actualUrlParts = actualUrl.split(/\?|&/g);
 
-      redirect(newHash) {
-          location.hash = newHash;
-      }
+        if (targetUrl !== actualUrlParts[0]) {
+            return false;
+        }
 
-      _getQueryParams(targetUrl, actualUrl) {
+        const queryParams = {};
 
-          const actualUrlParts = actualUrl.split(/\?|&/g);
+        const len = actualUrlParts.length;
+        for (let i = 1; i < len; i += 1) {
+            const paramParts = actualUrlParts[i].split('=');
 
-          if (targetUrl !== actualUrlParts[0]) {
-              return false;
-          }
+            const paramName = paramParts[0];
+            const paramValue = paramParts[1];
 
-          const queryParams = {};
+            queryParams[paramName] = paramValue;
+        }
 
-          const len = actualUrlParts.length;
-          for (let i = 1; i < len; i += 1) {
-              const paramParts = actualUrlParts[i].split('=');
+        return queryParams;
+    }
 
-              const paramName = paramParts[0];
-              const paramValue = paramParts[1];
+    run(initialHash) {
+        const that = this;
+        $(window).on('hashchange', function() {
+            that.navigate();
+        });
 
-              queryParams[paramName] = paramValue;
-          }
+        $(() => {
+            location.hash = initialHash;
+            that.navigate();
+        });
+    }
+}
 
-          return queryParams;
-      }
-
-      run(initialHash) {
-
-          const that = this;
-          $(window).on('hashchange', function() {
-              that.navigate();
-          });
-
-          $(() => {
-              location.hash = initialHash;
-              that.navigate();
-          });
-      }
-  }
-
-  export { Router };
+export { Router };

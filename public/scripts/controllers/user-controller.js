@@ -1,4 +1,4 @@
-import { userData as data } from 'data';
+import { userData as data } from 'user-data';
 import { templateLoader } from 'template-loader';
 
 const $container = $('#container');

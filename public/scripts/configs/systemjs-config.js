@@ -9,7 +9,8 @@ SystemJS.config({
         'user-controller': './scripts/controllers/user-controller.js',
         'players-controller': '/scripts/controllers/players-controller.js',
         'template-loader': './scripts/template-loader.js',
-        'data': './scripts/data-service/data.js'
+        'user-data': './scripts/data-service/user-data.js',
+        'players-data': './scripts/data-service/players-data.js'
     }
 });
 
