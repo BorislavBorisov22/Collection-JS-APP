@@ -23,8 +23,16 @@ function userLogin(user) {
         });
 }
 
-function userLogout(user) {
+function userLogout() {
+    const headers = {
+        Authorization: `Kinvey ${localStorage.getItem(AUTH_TOKEN_STORAGE)}`
+    };
 
+    return requester.postJSON(`${APP_BASE_URL}/user/${APP_KEY}/_logout`, {}, headers)
+        .then(() => {
+            localStorage.removeItem(USERNAME_STORAGE);
+            localStorage.removeItem(AUTH_TOKEN_STORAGE);
+        });
 }
 
 function userRegister(user) {
