@@ -2,8 +2,6 @@ import { userController } from 'user-controller';
 import { playersController } from 'players-controller';
 import { userData } from 'user-data';
 
-console.log(CryptoJS);
-
 const router = new Sammy(function() {
 
     this.before(function() {

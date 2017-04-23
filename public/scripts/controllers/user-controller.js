@@ -1,5 +1,6 @@
 import { userData as data } from 'user-data';
 import { templateLoader } from 'template-loader';
+import { validator } from 'validator';
 
 const $container = $('#container');
 const INITIAL_USER_COINS = 100;
@@ -47,6 +48,16 @@ const userController = {
 
                     if (password !== passwordRepeat) {
                         toastr.error('Passwords must be matching!');
+                        return;
+                    }
+
+                    if (!validator.isValidUsername(username)) {
+                        toastr.error("Username must be at least 5 and at most 12 symbols", "Invalid username length!");
+                        return;
+                    }
+
+                    if (!validator.isValidPassword(password)) {
+                        toastr.error("Password must be at least 6 and at most 20 symbols", "Invalid password length");
                         return;
                     }
 

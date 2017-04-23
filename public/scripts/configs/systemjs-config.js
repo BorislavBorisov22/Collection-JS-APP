@@ -10,6 +10,7 @@ SystemJS.config({
         'players-controller': '/scripts/controllers/players-controller.js',
         'template-loader': './scripts/template-loader.js',
         'user-data': './scripts/data-service/user-data.js',
-        'players-data': './scripts/data-service/players-data.js'
+        'players-data': './scripts/data-service/players-data.js',
+        'validator': './scripts/validator.js'
     }
 });
