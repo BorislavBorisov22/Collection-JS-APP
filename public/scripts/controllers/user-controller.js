@@ -74,6 +74,16 @@ const userController = {
                         toastr.success('');
                     });
             });
+    },
+    logout() {
+        data.userLogout()
+            .then(() => {
+                toastr.success('You have logged out successfully!');
+                location.hash = '#/home';
+            })
+            .catch(() => {
+                toastr.error('Please try again in a few moments', 'There was a problem logging out!');
+            });
     }
 };
 
