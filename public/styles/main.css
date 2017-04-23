@@ -2,17 +2,30 @@ body {
     font-family: sans-serif;
 }
 
+.hidden {
+    display: none;
+}
+
+#container {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 1350px;
+}
+
+#players-container {
+    text-align: left;
+}
+
 .player-card {
     display: inline-block;
+    vertical-align: top;
     text-align: center;
     margin: 5px;
     padding: 5px;
+    width: 140px;
+    height: 240px;
 }
 
 .player-card .headshot-img {
     display: block;
-}
-
-.hidden {
-    display: none;
 }

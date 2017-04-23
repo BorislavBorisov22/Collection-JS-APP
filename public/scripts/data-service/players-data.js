@@ -16,8 +16,7 @@ function getPlayers(filterOptions) {
 		requester
 			.getJSON(url)
 			.then((data) => {
-				const players = data.items;
-				resolve(players);
+				resolve(data);
 			}, () => {
 				reject();
 			});

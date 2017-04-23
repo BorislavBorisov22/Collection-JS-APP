@@ -3,28 +3,34 @@ import { templateLoader } from 'template-loader';
 import { playersData } from 'players-data';
 
 const playersController = {
-    show() {
+    show(context) {
+        const page = Number(context.params.page) || 1;
+
         Promise
             .all([
                 playersData.getPlayers({
-                    page: 1,
+                    page: page,
                     quality: 'gold,rare_gold'
                 }),
-                templateLoader.load('player-card')
+                templateLoader.load('players-list')
             ])
             .then((data) => {
-                const players = data[0];
+                const playersData = data[0];
                 const template = data[1];
 
                 // Fix name differences
-                players.forEach((player) => {
+                playersData.items.forEach((player) => {
                     if (!player.commonName) {
                         player.commonName = player.firstName + ' ' + player.lastName;
                     }
                 });
 
                 $('#container').html(template({
-                    players: players
+                    players: playersData.items,
+                    
+                    currentPage: page,
+                    pageCount: playersData.totalPages,
+                    size: 5
                 }));
             });
     }
