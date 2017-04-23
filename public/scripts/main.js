@@ -1,14 +1,9 @@
-import { Router } from 'router';
 import { userController } from 'user-controller';
 import { playersController } from 'players-controller';
 import { userData } from 'user-data';
 
-const router = new Router();
-
-router.on('#/login', userController.login)
-    .on('#/register', userController.register)
-    .on('#/home', (context) => {
-        // callback is temporary here for a test -> must be in a seperate module/class
+const router = new Sammy(function() {
+    this.get('#/home', function() {
         $('#container').html('HOME PAGE');
 
         if (userData.userIsLogged()) {
@@ -24,8 +19,14 @@ router.on('#/login', userController.login)
             $('#username-display').addClass('hidden');
             $('#btn-logout').addClass('hidden');
         }
-    })
-    .on('#/marketplace', playersController.show);
+    });
+
+    this.get('#/register', userController.register);
+
+    this.get('#/login', userController.login);
+
+    this.get('#/marketplace', playersController.show);
+});
 
 // keep location after reload
 const currentHash = location.hash || '#/home';
