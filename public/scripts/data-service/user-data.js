@@ -16,6 +16,9 @@ function userLogin(user) {
         Authorization: `Basic ${btoa(APP_KEY + ":" + APP_SECRET)}`,
     };
 
+    user.password = CryptoJS.SHA1(user.password).toString();
+    console.log(user);
+
     return requester.postJSON(`${APP_BASE_URL}/user/${APP_KEY}/login`, user, headers)
         .then((data) => {
             localStorage.setItem(USERNAME_STORAGE, data.username);
@@ -39,6 +42,9 @@ function userRegister(user) {
     const headers = {
         Authorization: `Basic ${btoa(APP_KEY + ":" + APP_SECRET)}`
     };
+
+    user.password = CryptoJS.SHA1(user.password).toString();
+    console.log(user);
 
     return requester.postJSON(`${APP_BASE_URL}/user/${APP_KEY}`, user, headers);
 }

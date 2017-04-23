@@ -8,8 +8,11 @@ body {
 
 #container {
     margin: 0 auto;
-    text-align: center;
     max-width: 1350px;
+}
+
+#marketplace {
+    text-align: center;
 }
 
 #players-container {
