@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>FUT Collection</title>
-    <link rel="stylesheet" href="./scripts/bower_components\bootstrap\dist\css/bootstrap.css">
-    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./favicon.ico/">
+    <link rel="stylesheet" href="./scripts/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="./scripts/bower_components/toastr/toastr.css">
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 
 <body>
@@ -22,12 +23,18 @@
                     <li><a href="#/album">My Album</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li id="go-to-login" class="hidden"><a href="#/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-                    <li id="go-to-register" class="hidden"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li id="go-to-login" class="hidden">
+                        <a href="#/register"><span class="glyphicon glyphicon-user"></span> Register</a>
+                    </li>
+                    <li id="go-to-register" class="hidden">
+                        <a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    </li>
                     <li class="hidden" id="username-display">
                         <a href="#/home"></a>
                     </li>
-                    <li id="btn-logout" class="hidden"><a href="#/logout"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+                    <li id="btn-logout" class="hidden">
+                        <a href="#/logout"><span class="glyphicon glyphicon-off"></span> Logout</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -43,11 +50,15 @@
     <script src="./scripts/node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="./scripts/node_modules/systemjs/dist/system.js"></script>
     <script src="./scripts/bower_components/toastr/toastr.js"></script>
-    
-    <!-- SystemJS configs -->
-    <script src="./scripts/configs/systemjs-config.js"></script>
+
     <!-- Handlebars helpers -->
     <script src="./scripts/handlebars-helpers/pagination.js"></script>
+    <!-- SystemJS configs -->
+    <script src="./scripts/configs/systemjs-config.js"></script>
+    <!-- App start -->
+    <script>
+        System.import('main');
+    </script>
 </body>
 
 </html>

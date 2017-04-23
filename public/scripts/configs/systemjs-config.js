@@ -13,5 +13,3 @@ SystemJS.config({
         'players-data': './scripts/data-service/players-data.js'
     }
 });
-
-System.import('main');

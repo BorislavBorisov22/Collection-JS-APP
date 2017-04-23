@@ -19,19 +19,14 @@ Handlebars.registerHelper('pagination', (currentPage, totalPages, size, options)
         }
     }
 
-    const pagesList = [];
-    for (var i = startPage; i <= endPage; i++) {
-        pagesList.push(i === currentPage ? i.toString() : i)
-    }
-
-    let leftArrow = !(startPage === 1);
+    let leftArrow = startPage !== 1;
     if (leftArrow) {
         leftArrow = currentPage - size;
         if (leftArrow < 1) {
             leftArrow = 1;
         }
     }
-    let rightArrow = !(endPage === totalPages);
+    let rightArrow = endPage !== totalPages;
     if (rightArrow) {
         rightArrow = currentPage + size;
         if (rightArrow > totalPages) {
