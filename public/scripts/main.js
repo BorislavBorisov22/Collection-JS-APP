@@ -8,12 +8,11 @@ const router = new Sammy(function() {
         toggleUserInfoDisplay();
     });
 
-    this.get('/#', function(context) {
+    this.get('/#', (context) => {
         context.redirect('#/home');
     });
 
     this.get('#/home', function() {
-
         $('#container').html('HOME PAGE');
     });
 
@@ -29,8 +28,8 @@ const router = new Sammy(function() {
         userController.logout();
     });
 
-    this.get('#/marketplace', () => {
-        playersController.show();
+    this.get('#/marketplace', (context) => {
+        playersController.show(context);
     });
 });
 
