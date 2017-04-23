@@ -6,7 +6,7 @@ SystemJS.config({
         'main': './scripts/main.js',
         'router': './scripts/router.js',
         'requester': './scripts/requester.js',
-        'login-controller': './scripts/controllers/login-controller.js',
+        'user-controller': './scripts/controllers/user-controller.js',
         'template-loader': './scripts/template-loader.js',
         'data': './scripts/data-service/data.js'
     }

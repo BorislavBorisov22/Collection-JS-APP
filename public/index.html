@@ -22,7 +22,12 @@
                     <li><a href="#/album">My Album</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#/go-to-login"><span class="glyphicon glyphicon-user"></span>Sign up</a></li>
+                    <li id="go-to-login" class="hidden"><a href="#/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+                    <li id="go-to-register" class="hidden"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li class="hidden" id="username-display">
+                        <a href="#/home"></a>
+                    </li>
+                    <li id="btn-logout" class="hidden"><a href="#/logout"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
                 </ul>
             </div>
         </nav>
@@ -40,10 +45,6 @@
 
     <!--SystemJS configs -->
     <script src="./scripts/configs/systemjs-config.js"></script>
-
-    <script src="./scripts/main.js"></script>
-    <script>
-    </script>
 </body>
 
 </html>

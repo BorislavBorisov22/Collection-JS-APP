@@ -1,5 +1,6 @@
 import { Router } from 'router';
-import { userLogin } from 'login-controller';
+import { userController } from 'user-controller';
+import { userData } from 'data';
 
 function getPlayers(filterOptions) {
     return new Promise((resolve, reject) => {
@@ -33,7 +34,26 @@ function getTemplate(url) {
 
 const router = new Router();
 
-router.on('#/go-to-login', userLogin)
+router.on('#/login', userController.login)
+    .on('#/register', userController.register)
+    .on('#/home', function(context) {
+        // callback is temporary here for a test -> must be in a seperate module/class
+        $('#container').html('HOME PAGE');
+
+        if (userData.userIsLogged()) {
+            $('#go-to-login').addClass('hidden');
+            $('#go-to-register').addClass('hidden');
+
+            $('#username-display').removeClass('hidden').children().first().html(localStorage.getItem('username'));
+            $('#btn-logout').removeClass('hidden');
+        } else {
+            $('#go-to-login').removeClass('hidden');
+            $('#go-to-register').removeClass('hidden');
+
+            $('#username-display').addClass('hidden');
+            $('#btn-logout').addClass('hidden');
+        }
+    })
     .on('#/marketplace', function(context) {
         Promise
             .all([

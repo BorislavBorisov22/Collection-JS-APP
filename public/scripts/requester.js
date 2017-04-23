@@ -1,5 +1,4 @@
 function request(url, method, contentType = '', body = {}, headers = {}) {
-
     const promise = new Promise((resolve, reject) => {
         $.ajax({
             url: url,
