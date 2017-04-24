@@ -17,7 +17,6 @@ function userLogin(user) {
     };
 
     user.password = CryptoJS.SHA1(user.password).toString();
-    console.log(user);
 
     return requester.postJSON(`${APP_BASE_URL}/user/${APP_KEY}/login`, user, headers)
         .then((data) => {
@@ -44,7 +43,6 @@ function userRegister(user) {
     };
 
     user.password = CryptoJS.SHA1(user.password).toString();
-    console.log(user);
 
     return requester.postJSON(`${APP_BASE_URL}/user/${APP_KEY}`, user, headers);
 }

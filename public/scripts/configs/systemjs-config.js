@@ -11,6 +11,7 @@ SystemJS.config({
         'template-loader': './scripts/template-loader.js',
         'user-data': './scripts/data-service/user-data.js',
         'players-data': './scripts/data-service/players-data.js',
-        'validator': './scripts/validator.js'
+        'validator': './scripts/validator.js',
+        'utils': './scripts/utils.js'
     }
 });

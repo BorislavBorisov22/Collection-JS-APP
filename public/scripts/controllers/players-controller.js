@@ -6,7 +6,7 @@ const playersController = {
     show(context) {
         const page = Number(context.params.page) || 1;
 
-        Promise
+        return Promise
             .all([
                 playersData.getPlayers({
                     page: page,
@@ -27,7 +27,7 @@ const playersController = {
 
                 $('#container').html(template({
                     players: playersData.items,
-                    
+
                     currentPage: page,
                     pageCount: playersData.totalPages,
                     size: 5
