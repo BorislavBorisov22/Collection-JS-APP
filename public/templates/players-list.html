@@ -2,10 +2,10 @@
     <div id="players-container">
         {{#players}}
         <div class="player-card">
-            <img class="headshot-img" src="{{headshotImgUrl}}" alt="{{commonName}}">
+            <img class="headshot-img" src="{{headshotImgUrl}}" alt="{{name}}">
             <img class="club-img" src="{{club.imageUrls.normal.medium}}" alt="{{club.name}}">
             <img class="nation-img" src="{{nation.imageUrls.medium}}" alt="{{nation.name}}">
-            <p>{{commonName}}</p>
+            <p>{{name}}</p>
             <p>{{position}}</p>
         </div>
         {{/players}}
@@ -14,13 +14,19 @@
     {{#pagination currentPage pageCount size}}
     <ul class="pagination">
         {{#if leftArrow}}
-        <li><a href="#/marketplace?page={{leftArrow}}">&lt;</a></li>
-        {{/if}} {{#each pages}} {{#if isCurrent}}
-        <li class="active"><a href="#/marketplace?page={{page}}">{{page}}</a></li>
+        <li><a href="#{{leftArrow}}">&lt;</a></li>
+        {{/if}} 
+
+        {{#each pages}}
+        {{#if isCurrent}}
+        <li class="active"><a href="#{{page}}">{{page}}</a></li>
         {{else}}
-        <li><a href="#/marketplace?page={{page}}">{{page}}</a></li>
-        {{/if}} {{/each}} {{#if rightArrow}}
-        <li><a href="#/marketplace?page={{rightArrow}}">&gt;</a></li>
+        <li><a href="#{{page}}">{{page}}</a></li>
+        {{/if}} 
+        {{/each}}
+        
+        {{#if rightArrow}}
+        <li><a href="#{{rightArrow}}">&gt;</a></li>
         {{/if}}
     </ul>
     {{/pagination}}
