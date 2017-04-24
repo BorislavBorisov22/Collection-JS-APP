@@ -1,12 +1,13 @@
 import { userData as data } from 'user-data';
 import { templateLoader } from 'template-loader';
 import { validator } from 'validator';
+import { utils } from 'utils';
 
 const $container = $('#container');
 const INITIAL_USER_COINS = 100;
 
 const userController = {
-    login(params) {
+    login(context) {
         templateLoader.load('login')
             .then((template) => {
                 $container.html(template());
@@ -28,13 +29,13 @@ const userController = {
                             location.hash = '#/home';
                         })
                         .catch(() => {
-                            toastr.error('Invalid user information!');
-                            disableButtonFor($('#btn-login'), 5000);
+                            toastr.error('Invalid username or password!');
+                            utils.disableButtonFor($('#btn-login'), 5000);
                         });
                 });
             });
     },
-    register(params) {
+    register(context) {
         templateLoader.load('register')
             .then((template) => {
                 $('#container').html(template());
@@ -46,21 +47,6 @@ const userController = {
                         password = $('#input-password').val(),
                         passwordRepeat = $('#input-password-repeat').val();
 
-                    if (password !== passwordRepeat) {
-                        toastr.error('Passwords must be matching!');
-                        return;
-                    }
-
-                    if (!validator.isValidUsername(username)) {
-                        toastr.error("Username must be at least 5 and at most 12 symbols", "Invalid username length!");
-                        return;
-                    }
-
-                    if (!validator.isValidPassword(password)) {
-                        toastr.error("Password must be at least 6 and at most 20 symbols", "Invalid password length");
-                        return;
-                    }
-
                     const user = {
                         firstName,
                         lastName,
@@ -69,42 +55,40 @@ const userController = {
                         coins: INITIAL_USER_COINS
                     };
 
-                    data.userRegister(user)
+                    const promises = [
+                        data.userRegister(user),
+                        validator.isValidUsername(username),
+                        validator.arePasswordsMatching(password, passwordRepeat),
+                        validator.isValidPassword(password),
+                    ];
+
+                    Promise.all(promises)
                         .then(() => {
                             toastr.success('Please login to continue', `User ${username} registered successfully`);
-                            location.hash = '#/login';
+                            context.redirect('#/login');
                         })
-                        .catch(() => {
-                            toastr.error('That username might be taken', 'Provided user information is invalid!');
-                            disableButtonFor($('$btn-register', 5000));
+                        .catch((errorMessage) => {
+                            console.log(errorMessage);
+                            if (errorMessage.getResponseHeader) {
+                                errorMessage = `User with username ${username} already exists`;
+                            }
+
+                            toastr.error(errorMessage);
+                            utils.disableButtonFor($('#btn-register'), 5000);
                         });
                 });
-
-                data.userRegister(user)
-                    .then(() => {
-                        toastr.success('');
-                    });
             });
     },
-    logout() {
+    logout(context) {
         data.userLogout()
             .then(() => {
                 toastr.success('You have logged out successfully!');
-                location.hash = '#/home';
+                context.redirect('#/home');
             })
             .catch(() => {
                 toastr.error('Please try again in a few moments', 'There was a problem logging out!');
             });
     }
 };
-
-function disableButtonFor(button, time) {
-    const $button = $(button);
-    $button.prop('disabled', true);
-
-    setTimeout(() => {
-        $button.prop('disabled', false);
-    }, time);
-}
 
 export { userController };

@@ -26,6 +26,17 @@ class Utils {
             $('#btn-logout').addClass('hidden');
         }
     }
+
+    disableButtonFor(button, time) {
+        const $button = $(button);
+        $button.addClass('disabled');
+        $button.removeClass('active');
+
+        setTimeout(() => {
+            $button.removeClass('disabled');
+            $button.addClass('active');
+        }, time);
+    }
 }
 
 const utils = new Utils();

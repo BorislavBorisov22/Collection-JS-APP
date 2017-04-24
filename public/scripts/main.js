@@ -11,26 +11,26 @@ const router = new Sammy(function() {
         context.redirect('#/home');
     });
 
-    this.get('#/home', function() {
+    this.get('#/home', (context) => {
         $('#container').html('HOME PAGE');
     });
 
-    this.get('#/register', () => {
-        userController.register();
+    this.get('#/register', (context) => {
+        userController.register(context);
     });
 
-    this.get('#/login', () => {
+    this.get('#/login', (context) => {
         userController.login();
     });
 
-    this.get('#/logout', () => {
-        userController.logout();
+    this.get('#/logout', (context) => {
+        userController.logout(context);
     });
 
     this.get('#/marketplace', (context) => {
         utils.showLoadingAnimation();
         playersController.show(context)
-            .then(() => utils.hideLoadingAnimation(300));
+            .then(() => utils.hideLoadingAnimation(500));
     });
 });
 
