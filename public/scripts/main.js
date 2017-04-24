@@ -30,7 +30,7 @@ const router = new Sammy(function() {
     this.get('#/marketplace', (context) => {
         utils.showLoadingAnimation();
         playersController.show(context)
-            .then(() => utils.hideLoadingAnimation(400));
+            .then(() => utils.hideLoadingAnimation(300));
     });
 });
 
