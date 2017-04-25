@@ -26,7 +26,7 @@ const userController = {
                     data.userLogin(user)
                         .then((data) => {
                             toastr.success(`User ${username} logged successfully!`);
-                            location.hash = '#/home';
+                            context.redirect('#/home');
                         })
                         .catch(() => {
                             toastr.error('Invalid username or password!');

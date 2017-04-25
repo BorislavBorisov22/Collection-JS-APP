@@ -4,23 +4,25 @@ import { userData } from 'user-data';
 import { utils } from 'utils';
 
 const router = new Sammy(function() {
-
     this.before(utils.toggleUserInfoDisplay);
 
-    this.get('/#', (context) => {
+    this.get('/', (context) => {
         context.redirect('#/home');
     });
 
     this.get('#/home', (context) => {
+        utils.navbarSetActive('home');
         $('#container').html('HOME PAGE');
     });
 
     this.get('#/register', (context) => {
+        utils.navbarSetActive('register');
         userController.register(context);
     });
 
     this.get('#/login', (context) => {
-        userController.login();
+        utils.navbarSetActive('login');
+        userController.login(context);
     });
 
     this.get('#/logout', (context) => {
@@ -28,12 +30,9 @@ const router = new Sammy(function() {
     });
 
     this.get('#/marketplace', (context) => {
+        utils.navbarSetActive('marketplace');
         utils.showLoadingAnimation();
         playersController.show(context)
-            .then(() => utils.hideLoadingAnimation(500));
+            .then(() => utils.hideLoadingAnimation(400));
     });
-});
-
-// keep location after reload
-const currentHash = location.hash || '#/home';
-router.run(currentHash);
+}).run();

@@ -37,6 +37,11 @@ class Utils {
             $button.addClass('active');
         }, time);
     }
+
+    navbarSetActive(name) {
+        $('.navbar li').removeClass('active');
+        $('#go-to-' + name).addClass('active');
+    }
 }
 
 const utils = new Utils();
