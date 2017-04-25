@@ -35,10 +35,20 @@ body {
     border-top-right-radius: 10px;
 }
 
-.player-card.gold, .player-card.rare_gold {
+.player-card.gold,
+.player-card.rare_gold {
     background: #fceabb;
     background: -webkit-linear-gradient(to bottom, #f8b500, #fceabb);
     background: linear-gradient(to bottom, #f8b500, #fceabb);
+}
+
+.player-card.silver,
+.player-card.rare_silver {
+    background: #414141;
+    background: -moz-linear-gradient(top, #414141 0%, #4e4e4e 2%, #505050 3%, #545454 3%, #545454 3%, #5c5c5c 4%, #5d5d5d 5%, #656565 6%, #7d7d7d 11%, #808080 11%, #868686 12%, #939393 15%, #969696 16%, #a0a0a0 19%, #a3a3a3 19%, #bdbdbd 26%, #bdbdbd 27%, #c7c7c7 30%, #d6d6d6 37%, #dadada 41%, #dddddd 42%, #e0e0e0 47%, #e0e0e0 53%, #dddddd 58%, #dadada 59%, #d6d6d6 63%, #c3c3c3 72%, #bdbdbd 73%, #bdbdbd 74%, #a9a9a9 80%, #a3a3a3 81%, #a0a0a0 81%, #969696 84%, #939393 85%, #868686 88%, #808080 89%, #7d7d7d 89%, #656565 94%, #5d5d5d 95%, #5c5c5c 96%, #545454 97%, #545454 97%, #505050 97%, #4e4e4e 98%, #414141 100%);
+    background: -webkit-linear-gradient(top, #414141 0%, #4e4e4e 2%, #505050 3%, #545454 3%, #545454 3%, #5c5c5c 4%, #5d5d5d 5%, #656565 6%, #7d7d7d 11%, #808080 11%, #868686 12%, #939393 15%, #969696 16%, #a0a0a0 19%, #a3a3a3 19%, #bdbdbd 26%, #bdbdbd 27%, #c7c7c7 30%, #d6d6d6 37%, #dadada 41%, #dddddd 42%, #e0e0e0 47%, #e0e0e0 53%, #dddddd 58%, #dadada 59%, #d6d6d6 63%, #c3c3c3 72%, #bdbdbd 73%, #bdbdbd 74%, #a9a9a9 80%, #a3a3a3 81%, #a0a0a0 81%, #969696 84%, #939393 85%, #868686 88%, #808080 89%, #7d7d7d 89%, #656565 94%, #5d5d5d 95%, #5c5c5c 96%, #545454 97%, #545454 97%, #505050 97%, #4e4e4e 98%, #414141 100%);
+    background: linear-gradient(to bottom, #414141 0%, #4e4e4e 2%, #505050 3%, #545454 3%, #545454 3%, #5c5c5c 4%, #5d5d5d 5%, #656565 6%, #7d7d7d 11%, #808080 11%, #868686 12%, #939393 15%, #969696 16%, #a0a0a0 19%, #a3a3a3 19%, #bdbdbd 26%, #bdbdbd 27%, #c7c7c7 30%, #d6d6d6 37%, #dadada 41%, #dddddd 42%, #e0e0e0 47%, #e0e0e0 53%, #dddddd 58%, #dadada 59%, #d6d6d6 63%, #c3c3c3 72%, #bdbdbd 73%, #bdbdbd 74%, #a9a9a9 80%, #a3a3a3 81%, #a0a0a0 81%, #969696 84%, #939393 85%, #868686 88%, #808080 89%, #7d7d7d 89%, #656565 94%, #5d5d5d 95%, #5c5c5c 96%, #545454 97%, #545454 97%, #505050 97%, #4e4e4e 98%, #414141 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#414141', endColorstr='#414141', GradientType=0);
 }
 
 .player-card .headshot-img {
