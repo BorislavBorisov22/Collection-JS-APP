@@ -7,7 +7,12 @@
             <img class="nation-img" src="{{nation.imageUrls.medium}}" alt="{{nation.name}}">
             <p>{{name}}</p>
             <p>{{position}}</p>
-            <p class="glyphicon glyphicon-euro">{{rating}}</p>
+            <section class="player-buy-section">
+                <p>
+                    <span class="glyphicon glyphicon-euro"></span> {{price}}
+                    <a href="#/players/purchase/{{id}}" class="btn btn-success btn-xs">Buy</a>
+                </p>
+            </section>
         </div>
         {{/players}}
     </div>

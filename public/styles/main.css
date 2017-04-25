@@ -35,6 +35,8 @@ body {
     /* end gradient styles */
 }
 
+.player-buy-section {}
+
 .player-card .headshot-img {
     display: block;
 }
