@@ -15,6 +15,10 @@ body {
     text-align: center;
 }
 
+#filters {
+    margin: 15px 0;
+}
+
 #players-container {
     text-align: center;
 }
@@ -25,17 +29,17 @@ body {
     text-align: center;
     margin: 5px;
     padding: 1px 15px;
-    width: 150px;
-    height: 240px;
-    border-radius: 10px;
-    /* gradient styles */
-    background: #fceabb;
-    background: -webkit-linear-gradient(to right, #f8b500, #fceabb);
-    background: linear-gradient(to right, #f8b500, #fceabb);
-    /* end gradient styles */
+    width: 155px;
+    height: 250px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
-.player-buy-section {}
+.player-card.gold, .player-card.rare_gold {
+    background: #fceabb;
+    background: -webkit-linear-gradient(to bottom, #f8b500, #fceabb);
+    background: linear-gradient(to bottom, #f8b500, #fceabb);
+}
 
 .player-card .headshot-img {
     display: block;
@@ -44,8 +48,8 @@ body {
 .pre-loader {
     display: none;
     position: fixed;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     z-index: 9999;

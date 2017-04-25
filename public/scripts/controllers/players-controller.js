@@ -2,6 +2,7 @@ import { requester } from 'requester';
 import { templateLoader } from 'template-loader';
 import { playersData } from 'players-data';
 
+const BASE_URL = '#/marketplace';
 const PAGINATOR_SIZE = 7;
 const DEFAUL_FILTER = {
     quality: 'silver,rare_silver,gold,rare_gold',
@@ -10,11 +11,10 @@ const DEFAUL_FILTER = {
 
 const playersController = {
     show(context) {
-        let filter;
-        if (context.params.filter) {
-            filter = JSON.parse(context.params.filter);
-        } else {
-            filter = $.extend({}, DEFAUL_FILTER);
+        // Preserves only own properties
+        let filter = JSON.parse(JSON.stringify(context.params));
+        if ($.isEmptyObject(filter)) {
+            filter = JSON.parse(JSON.stringify(DEFAUL_FILTER));
         }
 
         return Promise
@@ -23,24 +23,44 @@ const playersController = {
                 templateLoader.load('players-list')
             ])
             .then((data) => {
-                const playersData = data[0];
+                const playersResponse = data[0];
                 const template = data[1];
 
                 $('#container').html(template({
-                    players: playersData.items,
+                    players: playersResponse.items,
                     currentPage: Number(filter.page),
-                    pageCount: playersData.totalPages,
-                    size: PAGINATOR_SIZE
+                    pageCount: playersResponse.totalPages,
+                    paginatorSize: PAGINATOR_SIZE,
+                    filter: filter
                 }));
+
+                $('#filters').on('change', 'input', (e) => {
+                    const $target = $(e.target);
+                    const value = $target.val();
+
+                    let keyToBeChanged;
+                    if ($target.is('#filter-name')) {
+                        keyToBeChanged = 'name';
+                    }
+                    else if ($target.is('#filter-country')) {
+                        keyToBeChanged = 'country';
+                    }
+
+                    if (value) {
+                        filter[keyToBeChanged] = value;
+                    } else {
+                        delete filter[keyToBeChanged];
+                    }
+
+                    context.redirect(BASE_URL, filter);
+                });
 
                 $('.pagination').on('click', 'a', (e) => {
                     e.preventDefault();
 
                     const targertPage = $(e.target).attr('href').slice(1);
                     filter.page = Number(targertPage);
-                    context.redirect('#/marketplace', {
-                        filter: JSON.stringify(filter)
-                    });
+                    context.redirect(BASE_URL, filter);
                 });
             });
     }

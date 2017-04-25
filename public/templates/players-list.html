@@ -1,7 +1,12 @@
 <div id="marketplace">
+    <div class="form-group form-inline" id="filters">
+        <input type="text" class="form-control" id="filter-name" placeholder="Name" value="{{filter.name}}" autocomplete="off">
+        <input type="text" class="form-control" id="filter-country" placeholder="Country" value="{{filter.country}}" autocomplete="off">
+    </div>
+
     <div id="players-container">
         {{#players}}
-        <div class="player-card">
+        <div class="player-card {{color}}">
             <img class="headshot-img" src="{{headshotImgUrl}}" alt="{{name}}">
             <img class="club-img" src="{{club.imageUrls.normal.medium}}" alt="{{club.name}}">
             <img class="nation-img" src="{{nation.imageUrls.medium}}" alt="{{nation.name}}">
@@ -17,15 +22,21 @@
         {{/players}}
     </div>
 
-    {{#pagination currentPage pageCount size}}
+    {{#pagination currentPage pageCount paginatorSize}}
     <ul class="pagination">
         {{#if leftArrow}}
         <li><a href="#{{leftArrow}}">&lt;</a></li>
-        {{/if}} {{#each pages}} {{#if isCurrent}}
+        {{/if}}
+        
+        {{#each pages}}
+        {{#if isCurrent}}
         <li class="active"><a href="#{{page}}">{{page}}</a></li>
         {{else}}
         <li><a href="#{{page}}">{{page}}</a></li>
-        {{/if}} {{/each}} {{#if rightArrow}}
+        {{/if}}
+        {{/each}}
+        
+        {{#if rightArrow}}
         <li><a href="#{{rightArrow}}">&gt;</a></li>
         {{/if}}
     </ul>
