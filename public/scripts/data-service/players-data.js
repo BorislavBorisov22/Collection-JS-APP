@@ -5,7 +5,7 @@ function getPlayers(filterOptions) {
         const url = ((filterOptions) => {
             if (filterOptions) {
                 filterOptions = '?jsonParamObject=' +
-                    encodeURI(JSON.stringify(filterOptions));
+                    (JSON.stringify(filterOptions));
             } else {
                 filterOptions = '';
             }

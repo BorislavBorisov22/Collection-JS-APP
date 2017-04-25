@@ -1,12 +1,12 @@
 Handlebars.registerHelper('pagination', (currentPage, totalPages, size, options) => {
     size = size % 2 === 0 ? size + 1 : size;
-    
+
     const middle = Math.floor(size / 2);
     let startPage = currentPage - middle;
     let endPage = currentPage + middle;
 
     if (startPage <= 0) {
-        endPage -= (startPage - 1);
+        endPage = size;
         startPage = 1;
     }
 
@@ -26,6 +26,7 @@ Handlebars.registerHelper('pagination', (currentPage, totalPages, size, options)
             leftArrow = 1;
         }
     }
+
     let rightArrow = endPage !== totalPages;
     if (rightArrow) {
         rightArrow = currentPage + size;

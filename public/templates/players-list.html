@@ -7,6 +7,7 @@
             <img class="nation-img" src="{{nation.imageUrls.medium}}" alt="{{nation.name}}">
             <p>{{name}}</p>
             <p>{{position}}</p>
+            <p class="glyphicon glyphicon-euro">{{rating}}</p>
         </div>
         {{/players}}
     </div>
@@ -15,17 +16,11 @@
     <ul class="pagination">
         {{#if leftArrow}}
         <li><a href="#{{leftArrow}}">&lt;</a></li>
-        {{/if}} 
-
-        {{#each pages}}
-        {{#if isCurrent}}
+        {{/if}} {{#each pages}} {{#if isCurrent}}
         <li class="active"><a href="#{{page}}">{{page}}</a></li>
         {{else}}
         <li><a href="#{{page}}">{{page}}</a></li>
-        {{/if}} 
-        {{/each}}
-        
-        {{#if rightArrow}}
+        {{/if}} {{/each}} {{#if rightArrow}}
         <li><a href="#{{rightArrow}}">&gt;</a></li>
         {{/if}}
     </ul>

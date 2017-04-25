@@ -16,7 +16,7 @@ body {
 }
 
 #players-container {
-    text-align: left;
+    text-align: center;
 }
 
 .player-card {
@@ -24,27 +24,19 @@ body {
     vertical-align: top;
     text-align: center;
     margin: 5px;
-    padding: 5px;
+    padding: 1px 15px;
     width: 150px;
     height: 240px;
+    border-radius: 10px;
+    /* gradient styles */
+    background: #fceabb;
+    background: -webkit-linear-gradient(to right, #f8b500, #fceabb);
+    background: linear-gradient(to right, #f8b500, #fceabb);
+    /* end gradient styles */
 }
 
 .player-card .headshot-img {
     display: block;
-}
-
-
-/* test */
-
-.no-js #loader {
-    display: none;
-}
-
-.js #loader {
-    display: block;
-    position: absolute;
-    left: 100px;
-    top: 0;
 }
 
 .pre-loader {
