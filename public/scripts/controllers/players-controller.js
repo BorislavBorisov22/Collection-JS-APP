@@ -51,7 +51,8 @@ const playersController = {
                     } else {
                         delete filter[keyToBeChanged];
                     }
-
+                    
+                    filter.page = 1;
                     context.redirect(BASE_URL, filter);
                 });
 

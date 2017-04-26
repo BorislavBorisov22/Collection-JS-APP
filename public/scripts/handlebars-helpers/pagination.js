@@ -43,9 +43,14 @@ Handlebars.registerHelper('pagination', (currentPage, totalPages, size, options)
         });
     }
 
+    const leftMiddle = Math.ceil(startPage / 2);
+    const rightMiddle = Math.ceil(endPage + (totalPages - endPage) / 2);
     const context = {
         leftArrow,
         rightArrow,
+        totalPages,
+        leftMiddle,
+        rightMiddle,
         pages
     };
 

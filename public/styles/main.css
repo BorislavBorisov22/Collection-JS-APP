@@ -8,15 +8,11 @@ body {
 
 #container {
     margin: 0 auto;
-    max-width: 1350px;
+    max-width: 1550px;
 }
 
 #marketplace {
     text-align: center;
-}
-
-#filters {
-    margin: 15px 0;
 }
 
 #players-container {
@@ -25,34 +21,75 @@ body {
 
 .player-card {
     display: inline-block;
+    position: relative;
     vertical-align: top;
     text-align: center;
-    margin: 5px;
-    padding: 1px 15px;
-    width: 155px;
-    height: 250px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    font-weight: bold;
+    width: 175px;
+    height: 270px;
+    margin: 6px;
 }
-
-.player-card.gold,
+.player-card.legend {
+    background: url('./images/card-backgrounds/legend.png');
+}
 .player-card.rare_gold {
-    background: #fceabb;
-    background: -webkit-linear-gradient(to bottom, #f8b500, #fceabb);
-    background: linear-gradient(to bottom, #f8b500, #fceabb);
+    background: url('./images/card-backgrounds/rare_gold.png');
 }
-
-.player-card.silver,
+.player-card.gold {
+    background: url('./images/card-backgrounds/gold.png');
+}
 .player-card.rare_silver {
-    background: #414141;
-    background: -moz-linear-gradient(top, #414141 0%, #4e4e4e 2%, #505050 3%, #545454 3%, #545454 3%, #5c5c5c 4%, #5d5d5d 5%, #656565 6%, #7d7d7d 11%, #808080 11%, #868686 12%, #939393 15%, #969696 16%, #a0a0a0 19%, #a3a3a3 19%, #bdbdbd 26%, #bdbdbd 27%, #c7c7c7 30%, #d6d6d6 37%, #dadada 41%, #dddddd 42%, #e0e0e0 47%, #e0e0e0 53%, #dddddd 58%, #dadada 59%, #d6d6d6 63%, #c3c3c3 72%, #bdbdbd 73%, #bdbdbd 74%, #a9a9a9 80%, #a3a3a3 81%, #a0a0a0 81%, #969696 84%, #939393 85%, #868686 88%, #808080 89%, #7d7d7d 89%, #656565 94%, #5d5d5d 95%, #5c5c5c 96%, #545454 97%, #545454 97%, #505050 97%, #4e4e4e 98%, #414141 100%);
-    background: -webkit-linear-gradient(top, #414141 0%, #4e4e4e 2%, #505050 3%, #545454 3%, #545454 3%, #5c5c5c 4%, #5d5d5d 5%, #656565 6%, #7d7d7d 11%, #808080 11%, #868686 12%, #939393 15%, #969696 16%, #a0a0a0 19%, #a3a3a3 19%, #bdbdbd 26%, #bdbdbd 27%, #c7c7c7 30%, #d6d6d6 37%, #dadada 41%, #dddddd 42%, #e0e0e0 47%, #e0e0e0 53%, #dddddd 58%, #dadada 59%, #d6d6d6 63%, #c3c3c3 72%, #bdbdbd 73%, #bdbdbd 74%, #a9a9a9 80%, #a3a3a3 81%, #a0a0a0 81%, #969696 84%, #939393 85%, #868686 88%, #808080 89%, #7d7d7d 89%, #656565 94%, #5d5d5d 95%, #5c5c5c 96%, #545454 97%, #545454 97%, #505050 97%, #4e4e4e 98%, #414141 100%);
-    background: linear-gradient(to bottom, #414141 0%, #4e4e4e 2%, #505050 3%, #545454 3%, #545454 3%, #5c5c5c 4%, #5d5d5d 5%, #656565 6%, #7d7d7d 11%, #808080 11%, #868686 12%, #939393 15%, #969696 16%, #a0a0a0 19%, #a3a3a3 19%, #bdbdbd 26%, #bdbdbd 27%, #c7c7c7 30%, #d6d6d6 37%, #dadada 41%, #dddddd 42%, #e0e0e0 47%, #e0e0e0 53%, #dddddd 58%, #dadada 59%, #d6d6d6 63%, #c3c3c3 72%, #bdbdbd 73%, #bdbdbd 74%, #a9a9a9 80%, #a3a3a3 81%, #a0a0a0 81%, #969696 84%, #939393 85%, #868686 88%, #808080 89%, #7d7d7d 89%, #656565 94%, #5d5d5d 95%, #5c5c5c 96%, #545454 97%, #545454 97%, #505050 97%, #4e4e4e 98%, #414141 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#414141', endColorstr='#414141', GradientType=0);
+    background: url('./images/card-backgrounds/rare_silver.png');
+}
+.player-card.silver {
+    background: url('./images/card-backgrounds/silver.png');
+}
+.player-card.rare_bronze {
+    background: url('./images/card-backgrounds/rare_bronze.png');
+}
+.player-card.bronze {
+    background: url('./images/card-backgrounds/bronze.png');
 }
 
 .player-card .headshot-img {
-    display: block;
+    position: absolute;
+    top: 42.5px;
+    left: 72.5px;
+    width: 92px;
+    height: 92px;
+}
+
+.player-card .position,
+.player-card .club-img,
+.player-card .nation-img {
+    position: absolute;
+    left: 30px;
+}
+.player-card .position {
+    display: inline-block;
+    width: 40px;
+    font-size: 17px;
+    top: 25px;
+    left: 30px;
+}
+.player-card .club-img {
+    top: 55px;
+}
+.player-card .nation-img {
+    top: 100px;
+}
+
+.player-card .details {
+    position: absolute;
+    width: 175px;
+    top: 135px;
+}
+
+.player-card .name {
+    margin-top: 2.5px;
+}
+.player-card .price {
+    margin-top: 22px;
 }
 
 .pre-loader {
@@ -63,5 +100,5 @@ body {
     width: 100%;
     height: 100%;
     z-index: 9999;
-    background: url("./images/Preloader_1.gif") center no-repeat #fff;
+    background: url("./images/preloader.gif") center no-repeat #fff;
 }
