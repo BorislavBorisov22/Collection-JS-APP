@@ -42,6 +42,10 @@ class Utils {
         $('.navbar li').removeClass('active');
         $('#go-to-' + name).addClass('active');
     }
+
+    firstLetterToUpper(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
 }
 
 const utils = new Utils();

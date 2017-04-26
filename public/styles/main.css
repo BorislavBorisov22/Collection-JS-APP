@@ -15,6 +15,13 @@ body {
     text-align: center;
 }
 
+.checkbox-inline {
+    cursor: auto;
+}
+.checkbox-inline label {
+    font-weight: normal;
+}
+
 #players-container {
     text-align: center;
 }

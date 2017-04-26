@@ -31,8 +31,6 @@ const router = new Sammy(function() {
 
     this.get('#/marketplace', (context) => {
         utils.navbarSetActive('marketplace');
-        utils.showLoadingAnimation();
-        playersController.show(context)
-            .then(() => utils.hideLoadingAnimation(400));
+        playersController.show(context);
     });
 }).run();
