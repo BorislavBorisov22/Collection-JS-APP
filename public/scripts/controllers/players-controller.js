@@ -54,12 +54,10 @@ const playersController = {
                     if ($target.is('#filter-name')) {
                         keyToBeChanged = 'name';
                         value = $target.val();
-                    }
-                    else if ($target.is('#filter-country')) {
+                    } else if ($target.is('#filter-country')) {
                         keyToBeChanged = 'country';
                         value = $target.val();
-                    }
-                    else if ($target.parents('#filter-quality').length) {
+                    } else if ($target.parents('#filter-quality').length) {
                         keyToBeChanged = 'quality';
 
                         const selectedQualities = [];

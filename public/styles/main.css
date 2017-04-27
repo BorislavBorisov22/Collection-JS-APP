@@ -18,6 +18,7 @@ body {
 .checkbox-inline {
     cursor: auto;
 }
+
 .checkbox-inline label {
     font-weight: normal;
 }
@@ -36,24 +37,31 @@ body {
     height: 270px;
     margin: 6px;
 }
+
 .player-card.legend {
     background: url('./images/card-backgrounds/legend.png');
 }
+
 .player-card.rare_gold {
     background: url('./images/card-backgrounds/rare_gold.png');
 }
+
 .player-card.gold {
     background: url('./images/card-backgrounds/gold.png');
 }
+
 .player-card.rare_silver {
     background: url('./images/card-backgrounds/rare_silver.png');
 }
+
 .player-card.silver {
     background: url('./images/card-backgrounds/silver.png');
 }
+
 .player-card.rare_bronze {
     background: url('./images/card-backgrounds/rare_bronze.png');
 }
+
 .player-card.bronze {
     background: url('./images/card-backgrounds/bronze.png');
 }
@@ -72,6 +80,7 @@ body {
     position: absolute;
     left: 30px;
 }
+
 .player-card .position {
     display: inline-block;
     width: 40px;
@@ -79,9 +88,11 @@ body {
     top: 25px;
     left: 30px;
 }
+
 .player-card .club-img {
     top: 55px;
 }
+
 .player-card .nation-img {
     top: 100px;
 }
@@ -95,6 +106,7 @@ body {
 .player-card .name {
     margin-top: 2.5px;
 }
+
 .player-card .price {
     margin-top: 22px;
 }

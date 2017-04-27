@@ -16,12 +16,18 @@ class Utils {
             $('#go-to-login').addClass('hidden');
             $('#go-to-register').addClass('hidden');
 
-            $('#username-display').removeClass('hidden').children().first().html(localStorage.getItem('username'));
+            $('#username-display')
+                .removeClass('hidden')
+                .children()
+                .first()
+                .html(localStorage.getItem('username'));
             $('#btn-logout').removeClass('hidden');
+
         } else {
             $('#go-to-login').removeClass('hidden');
             $('#go-to-register').removeClass('hidden');
 
+            $('#user-coins-container').addClass('hidden');
             $('#username-display').addClass('hidden');
             $('#btn-logout').addClass('hidden');
         }

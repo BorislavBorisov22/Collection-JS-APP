@@ -6,7 +6,7 @@ import { utils } from 'utils';
 const router = new Sammy(function() {
     this.before(utils.toggleUserInfoDisplay);
 
-    this.get('/', (context) => {
+    this.get('/#', (context) => {
         context.redirect('#/home');
     });
 
@@ -33,4 +33,8 @@ const router = new Sammy(function() {
         utils.navbarSetActive('marketplace');
         playersController.show(context);
     });
-}).run();
+
+    this.get('#/players/purchase/:id', (context) => {
+        userController.purchasePlayer(context);
+    });
+}).run('#/home');

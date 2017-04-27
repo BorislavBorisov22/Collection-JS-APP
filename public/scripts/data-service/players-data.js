@@ -26,6 +26,11 @@ const playersData = {
                     reject();
                 });
         });
+    },
+    getPlayerPrice(rating) {
+        const price = Number(rating) * PLAYER_PRICE_MULTIPLIER;
+
+        return price;
     }
 };
 

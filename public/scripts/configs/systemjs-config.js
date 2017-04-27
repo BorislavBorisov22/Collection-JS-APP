@@ -12,6 +12,6 @@ SystemJS.config({
         'user-data': './scripts/data-service/user-data.js',
         'players-data': './scripts/data-service/players-data.js',
         'validator': './scripts/validator.js',
-        'utils': './scripts/utils.js'
+        'utils': './scripts/utils.js',
     }
 });

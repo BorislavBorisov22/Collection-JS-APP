@@ -46,6 +46,14 @@ class Validator {
 
         return promise;
     }
+
+    canAffordPurchase(coins, price) {
+        const coinsAsNumber = Number(coins);
+        const priceAsNumber = Number(price);
+
+        const canAfford = coinsAsNumber >= priceAsNumber;
+        return canAfford;
+    }
 }
 
 const validator = new Validator();

@@ -1,4 +1,10 @@
+<div class="row text-success">
+    <div class="col-sm-3">
+        <h2><span class="glyphicon glyphicon-euro"></span> {{userCoins}}</h2>
+    </div>
+</div>
 <div id="marketplace">
+
     <div class="form-group" id="filters">
         <div class="form-group form-inline">
             <input type="text" class="form-control" id="filter-name" placeholder="Name" value="{{filter.name}}" autocomplete="off">
@@ -8,7 +14,7 @@
             <div id="filter-quality">
                 {{#qualityList}}
                 <div class="checkbox-inline">
-                    <label><input type="checkbox" value="{{this.value}}" {{#if this.checked}}checked{{/if}}> {{this.name}}</label>
+                    <label><input type="checkbox" value="{{this.value}}" {{#if this.checked}}checked{{/if}}>{{this.name}}</label>
                 </div>
                 {{/qualityList}}
             </div>
@@ -41,17 +47,11 @@
         <li><a href="#{{leftArrow}}">&lt;</a></li>
         <li><a href="#1">1</a></li>
         <li><a href="#{{leftMiddle}}">...</a></li>
-        {{/if}}
-        
-        {{#each pages}}
-            {{#if isCurrent}}
-            <li class="active"><a href="#{{page}}">{{page}}</a></li>
-            {{else}}
-            <li><a href="#{{page}}">{{page}}</a></li>
-            {{/if}}
-        {{/each}}
-        
-        {{#if rightArrow}}
+        {{/if}} {{#each pages}} {{#if isCurrent}}
+        <li class="active"><a href="#{{page}}">{{page}}</a></li>
+        {{else}}
+        <li><a href="#{{page}}">{{page}}</a></li>
+        {{/if}} {{/each}} {{#if rightArrow}}
         <li><a href="#{{rightMiddle}}">...</a></li>
         <li><a href="#{{totalPages}}">{{totalPages}}</a></li>
         <li><a href="#{{rightArrow}}">&gt;</a></li>
