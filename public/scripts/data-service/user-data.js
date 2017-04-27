@@ -1,4 +1,6 @@
 import { requester } from 'requester';
+import { localStorer } from 'local-storer';
+
 
 const APP_KEY = 'kid_rk1gva0Al';
 const APP_SECRET = '8cf9f89958854f34a6948d7afffd6942';
@@ -9,7 +11,7 @@ const USERNAME_STORAGE = 'username';
 const USER_ID_STORAGE = 'user-id';
 
 function userIsLogged() {
-    return localStorage.getItem(AUTH_TOKEN_STORAGE) && localStorage.getItem(USERNAME_STORAGE);
+    return localStorer.getItem(AUTH_TOKEN_STORAGE) !== "" && localStorer.getItem(USERNAME_STORAGE) !== "";
 }
 
 function userLogin(user) {
@@ -21,22 +23,22 @@ function userLogin(user) {
 
     return requester.postJSON(`${APP_BASE_URL}/user/${APP_KEY}/login`, user, headers)
         .then((data) => {
-            localStorage.setItem(USERNAME_STORAGE, data.username);
-            localStorage.setItem(AUTH_TOKEN_STORAGE, data._kmd.authtoken);
-            localStorage.setItem(USER_ID_STORAGE, data._id);
+            localStorer.setItem(USERNAME_STORAGE, data.username);
+            localStorer.setItem(AUTH_TOKEN_STORAGE, data._kmd.authtoken);
+            localStorer.setItem(USER_ID_STORAGE, data._id);
         });
 }
 
 function userLogout() {
     const headers = {
-        Authorization: `Kinvey ${localStorage.getItem(AUTH_TOKEN_STORAGE)}`
+        Authorization: `Kinvey ${localStorer.getItem(AUTH_TOKEN_STORAGE)}`
     };
 
     return requester.postJSON(`${APP_BASE_URL}/user/${APP_KEY}/_logout`, {}, headers)
         .then(() => {
-            localStorage.removeItem(USERNAME_STORAGE);
-            localStorage.removeItem(AUTH_TOKEN_STORAGE);
-            localStorage.removeItem(USER_ID_STORAGE);
+            localStorer.removeItem(USERNAME_STORAGE);
+            localStorer.removeItem(AUTH_TOKEN_STORAGE);
+            localStorer.removeItem(USER_ID_STORAGE);
         });
 }
 
@@ -52,20 +54,20 @@ function userRegister(user) {
 
 function userGetInfo() {
     const headers = {
-        Authorization: `Kinvey ${localStorage.getItem(AUTH_TOKEN_STORAGE)}`
+        Authorization: `Kinvey ${localStorer.getItem(AUTH_TOKEN_STORAGE)}`
     };
 
-    return requester.getJSON(`${APP_BASE_URL}/user/${APP_KEY}/${localStorage.getItem(USER_ID_STORAGE)}`, headers);
+    return requester.getJSON(`${APP_BASE_URL}/user/${APP_KEY}/_me`, headers);
 }
 
 function userUpdateInfo(info) {
     info = info || {};
 
     const headers = {
-        Authorization: `Kinvey ${localStorage.getItem(AUTH_TOKEN_STORAGE)}`
+        Authorization: `Kinvey ${localStorer.getItem(AUTH_TOKEN_STORAGE)}`
     };
 
-    return requester.putJSON(`${APP_BASE_URL}/user/${APP_KEY}/${localStorage.getItem(USER_ID_STORAGE)}`, info, headers);
+    return requester.putJSON(`${APP_BASE_URL}/user/${APP_KEY}/${localStorer.getItem(USER_ID_STORAGE)}`, info, headers);
 }
 
 const userData = {

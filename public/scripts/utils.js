@@ -1,4 +1,5 @@
 import { userData } from 'user-data';
+import { localStorer } from 'local-storer';
 
 class Utils {
     showLoadingAnimation() {
@@ -20,7 +21,7 @@ class Utils {
                 .removeClass('hidden')
                 .children()
                 .first()
-                .html(localStorage.getItem('username'));
+                .html(localStorer.getItem('username'));
             $('#btn-logout').removeClass('hidden');
 
         } else {
