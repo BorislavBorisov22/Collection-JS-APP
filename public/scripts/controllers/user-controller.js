@@ -109,36 +109,58 @@ const userController = {
         Promise.all(promises)
             .then((data) => {
                 return new Promise((resolve, reject) => {
-                    const purchasedPlayers = data[0].purchasedPlayers;
-                    const playerId = data[1].items[0].id;
-                    const playerRating = data[1].items[0].rating;
+                    const userInfo = data[0];
+                    const player = data[1].items[0];
 
-                    if (purchasedPlayers.some(x => x === playerId)) {
+                    if (userInfo.purchasedPlayers.some(x => x === player.id)) {
                         reject('You already own this player!');
                     }
 
-                    const playerPrice = playersData.getPlayerPrice(playerRating);
-                    let coins = data[0].coins;
+                    const playerPrice = playersData.getPlayerPrice(player.rating);
 
-                    if (!validator.canAffordPurchase(coins, playerPrice)) {
+                    if (!validator.canAffordPurchase(userInfo.coins, playerPrice)) {
                         reject("You don't have enough coins to buy this player!");
                     }
 
-                    coins -= playerPrice;
-                    purchasedPlayers.push(playerId);
-                    resolve([purchasedPlayers, coins]);
+                    resolve([userInfo, player, playerPrice]);
                 });
             })
-            .then(([purchasedPlayers, coins]) => {
+            .then(([userInfo, player, playerPrice]) => {
+                return new Promise((resolve, reject) => {
+                    swal({
+                            title: `Are you sure you want to buy ${player.firstName} ${player.lastName} for ${playerPrice} ?`,
+                            imageUrl: player.headshotImgUrl,
+                            showCancelButton: true,
+                            confirmButtonClass: "btn-success",
+                            cancleButtonClass: "btn-danger",
+                            confirmButtonText: "Buy",
+                            cancelButtonText: "Cancel",
+                            closeOnConfirm: true,
+                            closeOnCancel: true
+                        },
+                        function(isConfirm) {
+                            if (isConfirm) {
+                                userInfo.coins = Number(userInfo.coins) - playerPrice;
+                                userInfo.purchasedPlayers.push(playerId);
+                                resolve(userInfo);
+                            } else {
+                                reject("Purchase has been cancelled");
+                            }
+                        });
+                });
+            })
+            .then((userInfo) => {
+                const { purchasedPlayers, coins } = userInfo;
+
                 const info = {
                     purchasedPlayers,
                     coins
                 };
 
-                return userData.userUpdateInfo(info);
+                userData.userUpdateInfo(info);
             })
             .then(() => {
-                toastr.success('Player added to your collection!');
+                toastr.success("Player has been added to your collection!");
             })
             .catch((err) => {
                 toastr.error(err);
