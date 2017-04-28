@@ -6,13 +6,9 @@ body {
     display: none;
 }
 
-.toast-position {
-    top: 60px;
-    right: 10px;
-}
-
 #container {
-    max-width: 1600px;
+    margin: 0 auto;
+    max-width: 1550px;
 }
 
 #marketplace {
@@ -40,10 +36,6 @@ body {
     width: 175px;
     height: 270px;
     margin: 6px;
-}
-
-.player-card.purchased {
-    opacity: 0.6;
 }
 
 .player-card.legend {
@@ -129,3 +121,79 @@ body {
     z-index: 9999;
     background: url("./images/preloader.gif") center no-repeat #fff;
 }
+
+.gif {
+  min-height: 80%;
+  min-width: 1024px;
+	
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: absolute;
+  display: inline-block;
+  top: 4%;
+  left: 0;
+  z-index: 1;
+}
+
+@media screen and (max-width: 1024px) { 
+ .gif {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
+
+.navbar {
+    z-index: 2;
+    background-color:#101010;
+    color:white;
+}
+
+.team{
+    display: inline-block;
+    position: relative;
+    vertical-align: bottom;
+    text-align: center;
+    font-weight: bold;
+    width: 200px;
+    height: 80px;
+    margin: 6px;
+    z-index: 3;
+    background-color: #101010;  
+    float: left;
+}
+.play{
+    display: inline-block;
+    position: relative;
+    vertical-align: bottom;
+    text-align: center;
+    font-weight: bold;
+    width: 200px;
+    height: 80px;
+    margin: 6px;
+    z-index: 3;
+    background-color: #101010;  
+    float: left;
+}
+
+.box3{
+    display: inline-block;
+    position: relative;
+    vertical-align: bottom;
+    text-align: center;
+    font-weight: bold;
+    width: 200px;
+    height: 80px;
+    margin: 6px;
+    z-index: 3;
+    background-color: #101010;  
+    float: left;
+}
+
+.boxes {
+    top: 250%;
+    margin-top:50%;
+}
+
+
