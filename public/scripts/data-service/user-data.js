@@ -53,6 +53,10 @@ function userRegister(user) {
 }
 
 function userGetInfo() {
+    if (!userIsLogged()) {
+        return {};
+    }
+
     const headers = {
         Authorization: `Kinvey ${localStorer.getItem(AUTH_TOKEN_STORAGE)}`
     };

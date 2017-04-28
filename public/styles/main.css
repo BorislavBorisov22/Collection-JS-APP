@@ -6,9 +6,13 @@ body {
     display: none;
 }
 
+.toast-position {
+    top: 60px;
+    right: 10px;
+}
+
 #container {
-    margin: 0 auto;
-    max-width: 1550px;
+    max-width: 1600px;
 }
 
 #marketplace {
@@ -36,6 +40,10 @@ body {
     width: 175px;
     height: 270px;
     margin: 6px;
+}
+
+.player-card.purchased {
+    opacity: 0.6;
 }
 
 .player-card.legend {

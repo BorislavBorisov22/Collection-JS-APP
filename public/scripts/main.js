@@ -3,10 +3,14 @@ import { playersController } from 'players-controller';
 import { userData } from 'user-data';
 import { utils } from 'utils';
 
+// keeps it from covering buttons
+toastr.options.positionClass = 'toast-position';
+
 const router = new Sammy(function() {
     this.before(utils.toggleUserInfoDisplay);
 
-    this.get('/#', (context) => {
+    // keep it as '/' because with '/#' it throws an error after login
+    this.get('/', (context) => {
         context.redirect('#/home');
     });
 

@@ -1,6 +1,7 @@
 import { requester } from 'requester';
 import { templateLoader } from 'template-loader';
 import { playersData } from 'players-data';
+import { userData } from 'user-data';
 import { utils } from 'utils';
 
 const BASE_URL = '#/marketplace';
@@ -21,15 +22,28 @@ const playersController = {
         utils.showLoadingAnimation();
         Promise
             .all([
+                userData.userGetInfo(),
                 playersData.getPlayers(filter),
                 templateLoader.load('players-list')
             ])
-            .then((data) => {
-                const playersResponse = data[0];
-                const template = data[1];
+            .then(([userResponse, playersResponse, template]) => {
+                // User data
+                const isLogged = userData.userIsLogged();
+                const user = userResponse;
+                if (isLogged) {
+                    const playersOnPage = playersResponse.items;
+                    const purchasedPlayers = user.purchasedPlayers;
+                    playersOnPage.forEach((p) => {
+                        const playerIsPurchased = purchasedPlayers.some((id) => id === p.id);
+                        if (playerIsPurchased) {
+                            p.purchased = true;
+                        }
+                    });
+                }
 
                 // Template data
                 $('#container').html(template({
+                    user: user,
                     players: playersResponse.items,
                     currentPage: Number(filter.page),
                     pageCount: playersResponse.totalPages,
