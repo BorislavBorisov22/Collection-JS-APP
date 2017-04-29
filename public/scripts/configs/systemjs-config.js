@@ -14,6 +14,6 @@ SystemJS.config({
         'players-data': './scripts/data-service/players-data.js',
         'validator': './scripts/validator.js',
         'utils': './scripts/utils.js',
-        
+        'local-storer': './scripts/local-storer.js'
     }
 });

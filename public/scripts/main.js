@@ -10,7 +10,7 @@ const router = new Sammy(function() {
     this.before(utils.toggleUserInfoDisplay);
 
     // keep it as '/' because with '/#' it throws an error after login
-    this.get('/', (context) => {
+    this.get('/#', (context) => {
         context.redirect('#/home');
     });
 
