@@ -3,6 +3,7 @@ import { playersData } from 'players-data';
 import { templateLoader } from 'template-loader';
 import { validator } from 'validator';
 import { utils } from 'utils';
+import { notificator } from 'notificator';
 
 const $container = $('#container');
 const INITIAL_USER_COINS = 60000;
@@ -26,11 +27,11 @@ const userController = {
 
                     userData.userLogin(user)
                         .then((data) => {
-                            toastr.success(`User ${username} logged successfully!`);
+                            notificator.success(`User ${username} logged successfully!`);
                             context.redirect('#/home');
                         })
                         .catch(() => {
-                            toastr.error('Invalid username or password!');
+                            notificator.error('Invalid username or password!');
                             utils.disableButtonFor($('#btn-login'), 5000);
                         });
                 });
@@ -65,7 +66,7 @@ const userController = {
                             return userData.userRegister(user);
                         })
                         .then(() => {
-                            toastr.success('', `User ${username} registered successfully`);
+                            notificator.success('', `User ${username} registered successfully`);
                             context.redirect('#/home');
                         })
                         .catch((errorMessage) => {
@@ -73,7 +74,7 @@ const userController = {
                                 errorMessage = `User with username ${username} already exists`;
                             }
 
-                            toastr.error(errorMessage);
+                            notificator.error(errorMessage);
                             utils.disableButtonFor($('#btn-register'), 5000);
                         });
                 });
@@ -82,78 +83,11 @@ const userController = {
     logout(context) {
         userData.userLogout()
             .then(() => {
-                toastr.success('You have logged out successfully!');
+                notificator.success('You have logged out successfully!');
                 context.redirect('#/home');
             })
             .catch(() => {
-                toastr.error('Please try again in a few moments', 'There was a problem logging out!');
-            });
-    },
-    purchasePlayer(context) {
-        if (!userData.userIsLogged()) {
-            toastr.error('You must be logged in in order to make a purchase!');
-            return;
-        }
-
-        const playerId = context.params.id;
-
-        const playerFilter = {
-            id: playerId
-        };
-
-        const promises = [userData.userGetInfo(), playersData.getPlayers(playerFilter)];
-
-        Promise.all(promises)
-            .then((data) => {
-                return new Promise((resolve, reject) => {
-                    const userInfo = data[0];
-                    const player = data[1].items[0];
-
-                    if (userInfo.purchasedPlayers.some(x => x === player.id)) {
-                        reject('You already own this player!');
-                    }
-
-                    const playerPrice = playersData.getPlayerPrice(player.rating);
-
-                    if (!validator.canAffordPurchase(userInfo.coins, playerPrice)) {
-                        reject("You don't have enough coins to buy this player!");
-                    }
-
-                    resolve([userInfo, player, playerPrice]);
-                });
-            })
-            .then(([userInfo, player, playerPrice]) => {
-                return new Promise((resolve, reject) => {
-                    swal({
-                            title: `Are you sure you want to buy ${player.firstName} ${player.lastName} for ${playerPrice} ?`,
-                            imageUrl: player.headshotImgUrl,
-                            showCancelButton: true,
-                            confirmButtonClass: "btn-success",
-                            cancleButtonClass: "btn-danger",
-                            confirmButtonText: "Buy",
-                            cancelButtonText: "Cancel",
-                            closeOnConfirm: true,
-                            closeOnCancel: true
-                        },
-                        function(isConfirm) {
-                            if (isConfirm) {
-                                userInfo.coins = Number(userInfo.coins) - playerPrice;
-                                userInfo.purchasedPlayers.push(playerId);
-                                resolve(userInfo);
-                            } else {
-                                reject("Purchase has been cancelled");
-                            }
-                        });
-                });
-            })
-            .then((userInfo) => {
-                userData.userUpdateInfo(userInfo);
-            })
-            .then(() => {
-                toastr.success("Player has been added to your collection!");
-            })
-            .catch((err) => {
-                toastr.error(err);
+                notificator.error('Please try again in a few moments', 'There was a problem logging out!');
             });
     }
 };

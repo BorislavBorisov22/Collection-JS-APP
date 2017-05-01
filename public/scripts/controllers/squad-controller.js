@@ -1,4 +1,5 @@
 import { squadData } from 'squad-data';
+import { notificator } from 'notificator';
 
 const MIN_PLAYERS_TO_SAVE = 11;
 
@@ -6,13 +7,13 @@ const squadController = {
     saveSquad(context) {
         const squad = this.collectPlayerNames();
         if (Object.keys(squad).length !== MIN_PLAYERS_TO_SAVE) {
-            toastr.error('Squad must have 11 players!');
+            notificator.error('Squad must have 11 players!');
             return;
         }
 
         squadData.saveSquad(squad)
             .then(() => {
-                toastr.success('Squad saved successfully!');
+                notificator.success('Squad saved successfully!');
                 context.redirect('#/squad');
             });
     },

@@ -5,14 +5,11 @@ import { squadController } from 'squad-controller';
 import { userData } from 'user-data';
 import { utils } from 'utils';
 import { albumController } from 'album-controller';
-
-// keeps it from covering buttons
-//toastr.options.positionClass = 'toast-position';
+import { tradeController } from 'trade-controller';
 
 const router = new Sammy(function() {
     this.before(utils.toggleUserInfoDisplay);
 
-    // keep it as '/' because with '/#' it throws an error after login
     this.get('/#', (context) => {
         context.redirect('#/home');
     });
@@ -51,6 +48,10 @@ const router = new Sammy(function() {
     });
 
     this.get('#/players/purchase/:id', (context) => {
-        userController.purchasePlayer(context);
+        tradeController.purchasePlayer(context);
+    });
+
+    this.get('#/players/sell/:id', (context) => {
+        tradeController.sellPlayer(context);
     });
 }).run('#/home');

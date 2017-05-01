@@ -17,6 +17,8 @@ SystemJS.config({
         'validator': './scripts/validator.js',
         'utils': './scripts/utils.js',
         'local-storer': './scripts/local-storer.js',
-        'squad-controller': './scripts/controllers/squad-controller.js'
+        'squad-controller': './scripts/controllers/squad-controller.js',
+        'trade-controller': './scripts/controllers/trade-controller.js',
+        'notificator': './scripts/notificator.js',
     }
 });

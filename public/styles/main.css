@@ -211,10 +211,11 @@ body {
 
 #football-pitch-container {
     background: url('./images/football-pitch-background/football-pitch.png') center no-repeat;
+    background-size: 100%;
     min-height: 570px;
-    border-radius: 25px;
-    z-index: 1;
-    /*margin-left: 200px;*/
+    border-radius: 15px;
+    margin-left: 5px;
+    margin-right: 2px;
 }
 
 #owned-footballers-container {
@@ -223,6 +224,7 @@ body {
     border-radius: 10px;
     max-height: 570px;
     overflow-y: scroll;
+    direction: rtl;
     text-align: left;
 }
 
@@ -315,4 +317,16 @@ body {
     position: absolute;
     top: 445px;
     left: 205px;
+}
+
+.scaled {
+    transform: scale(0.3, 0.3);
+    -ms-transform: scale(0.3, 0.3);
+    /* IE 9 */
+    -webkit-transform: scale(0.3, 0.3);
+    /* Safari and Chrome */
+    -o-transform: scale(0.3, 0.3);
+    /* Opera */
+    -moz-transform: scale(0.3, 0.3);
+    /* Firefox */
 }

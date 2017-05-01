@@ -31,6 +31,24 @@ const playersData = {
         const price = Number(rating) * PLAYER_PRICE_MULTIPLIER;
 
         return price;
+    },
+    getPlayerById(id) {
+        const filterOptions = {
+            id: id
+        };
+
+        return this.getPlayers(filterOptions)
+            .then((playersData) => {
+                return new Promise((resolve, reject) => {
+                    const players = playersData.items;
+
+                    if (players.length) {
+                        resolve(players[0]);
+                    } else {
+                        reject("Cannot find player with such id");
+                    }
+                });
+            });
     }
 };
 

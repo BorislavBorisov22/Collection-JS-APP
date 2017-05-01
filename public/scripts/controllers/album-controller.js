@@ -3,6 +3,7 @@ import { playersData } from 'players-data';
 import { squadData } from 'squad-data';
 import { templateLoader } from 'template-loader';
 import { utils } from 'utils';
+import { notificator } from 'notificator';
 
 const $container = $('#container');
 
@@ -42,16 +43,20 @@ const albumController = {
 
                 $container.html(template(templateData));
 
-                $('.player-card.album-card .headshot-img').draggable({
+                $('.player-card.album-card').draggable({
                     containment: '#container',
                     cursor: 'move',
                     helper: 'clone',
-                    scroll: 'false',
-                    appendTo: '#container'
+                    appendTo: '#container',
+                    start: function(ev, ui) {
+                        $(this).css('margin', '');
+                        $(this).css('padding', '');
+                        $(ui.helper).addClass('scaled');
+                    }
                 });
 
                 $('.player-shirt').droppable({
-                    accept: '.player-card.album-card .headshot-img',
+                    accept: '.player-card.album-card',
                     tolerance: 'pointer',
                     drop: function(event, ui) {
 
@@ -70,7 +75,7 @@ const albumController = {
                 utils.hideLoadingAnimation();
             })
             .then(() => {
-                toastr.warning('Drag footballers images on any position you desire', 'Build your dream squad!', { timeOut: 10000111111 });
+                notificator.warning('Drag your stickers on any position you desire', 'Build your dream squad!', 10000111111);
             });
     }
 };

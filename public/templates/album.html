@@ -1,8 +1,8 @@
 <div class="row">
     <div id="owned-footballers-container" class="col-sm-6">
         {{#if ownedPlayers.length}} {{#ownedPlayers}}
-        <div class="player-card album-card {{color}} {{#if purchased}}purchased{{/if}}">
-            <img data-player-name="{{name}}" class="headshot-img" src="{{headshot.medImgUrl}}" alt="{{name}}">
+        <div data-player-name="{{name}}" class="player-card album-card {{color}} {{#if purchased}}purchased{{/if}}">
+            <img class="headshot-img" src="{{headshot.medImgUrl}}" alt="{{name}}">
             <p class="position">{{position}}</p>
             <img class="club-img" src="{{club.imageUrls.normal.medium}}" alt="{{club.name}}">
             <img class="nation-img" src="{{nation.imageUrls.medium}}" alt="{{nation.name}}">
@@ -121,6 +121,6 @@
         </div>
     </div>
     <div class="col-sm-offest-2 col-sm-pull-1">
-        <a class="btn btn-success btn-md" href="#/squad/save">Save Squad</a>
+        <a class="btn btn-warning btn-md" href="#/squad/save">Save Squad</a>
     </div>
 </div>
