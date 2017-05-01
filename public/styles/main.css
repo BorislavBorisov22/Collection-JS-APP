@@ -36,6 +36,7 @@ body {
     width: 175px;
     height: 270px;
     margin: 6px;
+    z-index: 1000;
 }
 
 .player-card.legend {
@@ -72,6 +73,7 @@ body {
     left: 72.5px;
     width: 92px;
     height: 92px;
+    z-index: 1000;
 }
 
 .player-card .position,
@@ -123,32 +125,31 @@ body {
 }
 
 .gif {
-  min-height: 80%;
-  min-width: 1024px;
-	
-  width: 100%;
-  height: auto;
-	
-  /* Set up positioning */
-  position: absolute;
-  display: inline-block;
-  top: 4%;
-  left: 0;
-  z-index: 1;
+    min-height: 80%;
+    min-width: 1024px;
+    width: 100%;
+    height: auto;
+    /* Set up positioning */
+    position: absolute;
+    display: inline-block;
+    top: 4%;
+    left: 0;
+    z-index: 1;
 }
 
-@media screen and (max-width: 1024px) { 
- .gif {
-    left: 50%;
-    margin-left: -512px;   /* 50% */
-  }
+@media screen and (max-width: 1024px) {
+    .gif {
+        left: 50%;
+        margin-left: -512px;
+        /* 50% */
+    }
 }
 
 .navbar {
     z-index: 2;
 }
 
-.team{
+.team {
     display: inline-block;
     position: relative;
     vertical-align: bottom;
@@ -158,24 +159,25 @@ body {
     height: 80px;
     margin: 6px;
     z-index: 3;
-    background-color: #101010;  
-    float: left;
-}
-.play{
-    display: inline-block;
-    position: relative;
-    vertical-align: bottom;
-    text-align: center;
-    font-weight: bold;
-    width: 200px;
-    height: 80px;
-    margin: 6px;
-    z-index: 3;
-    background-color: #101010;  
+    background-color: #101010;
     float: left;
 }
 
-.box3{
+.play {
+    display: inline-block;
+    position: relative;
+    vertical-align: bottom;
+    text-align: center;
+    font-weight: bold;
+    width: 200px;
+    height: 80px;
+    margin: 6px;
+    z-index: 3;
+    background-color: #101010;
+    float: left;
+}
+
+.box3 {
     display: inline-block;
     position: relative;
     vertical-align: bottom;
@@ -191,5 +193,126 @@ body {
 
 .boxes {
     top: 250%;
-    margin-top:50%;
+    margin-top: 50%;
+}
+
+.additional-player-info {
+    position: relative;
+    left: 10px;
+    bottom: 10px;
+    text-align: left;
+}
+
+.btn-sell-player {
+    position: relative;
+    left: 50px;
+    bottom: 50px;
+}
+
+#football-pitch-container {
+    background: url('./images/football-pitch-background/football-pitch.png') center no-repeat;
+    min-height: 570px;
+    border-radius: 25px;
+    z-index: 1;
+    /*margin-left: 200px;*/
+}
+
+#owned-footballers-container {
+    /*background-color: lightgrey;*/
+    /*border: 1px solid deeppink;*/
+    border-radius: 10px;
+    max-height: 570px;
+    overflow-y: scroll;
+    text-align: left;
+}
+
+.headshot-img {
+    z-index: 1000;
+}
+
+.player-shirt {
+    background: url('../styles/images/football-shirt-template.png');
+    background-repeat: no-repeat;
+    background-size: 90px 70px;
+    display: inline-block;
+    width: 90px;
+    height: 70px;
+    margin: 2.5em;
+    position: relative;
+    left: 1em;
+}
+
+.shirt-number {
+    text-align: center;
+    font-size: 35px;
+    position: relative;
+    color: white;
+}
+
+.shirt-name {
+    text-align: center;
+    letter-spacing: -1px;
+    color: white;
+    position: relative;
+    top: 5px;
+}
+
+#forwards-pitch-position {
+    position: relative;
+    left: 40px;
+    top: 20px;
+}
+
+#midfielders-pitch-position {
+    position: relative;
+    left: 35px;
+    top: 50px;
+}
+
+#center-midfielder {
+    position: absolute;
+    left: 170px;
+    top: 40px;
+}
+
+#left-midfielder {
+    position: absolute;
+    top: -10px;
+    left: 50px;
+}
+
+#right-midfielder {
+    position: absolute;
+    left: 300px;
+    top: -10px;
+}
+
+#left-back {
+    position: absolute;
+    left: 35px;
+    top: 310px;
+}
+
+#left-center-back {
+    position: absolute;
+    top: 360px;
+    left: 140px;
+}
+
+#right-center-back {
+    position: absolute;
+    top: 360px;
+    left: 270px;
+}
+
+#right-back {
+    position: absolute;
+    top: 310px;
+    left: 375px;
+}
+
+#goalkeeper {
+    position: absolute;
+    top: 445px;
+    left: 205px;
 }

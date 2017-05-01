@@ -8,12 +8,15 @@ SystemJS.config({
         'requester': './scripts/requester.js',
         'user-controller': './scripts/controllers/user-controller.js',
         'players-controller': '/scripts/controllers/players-controller.js',
+        'album-controller': '/scripts/controllers/album-controller.js',
         'home-controller': '/scripts/controllers/home-controller.js',
         'template-loader': './scripts/template-loader.js',
         'user-data': './scripts/data-service/user-data.js',
         'players-data': './scripts/data-service/players-data.js',
+        'squad-data': './scripts/data-service/squad-data.js',
         'validator': './scripts/validator.js',
         'utils': './scripts/utils.js',
-        'local-storer': './scripts/local-storer.js'
+        'local-storer': './scripts/local-storer.js',
+        'squad-controller': './scripts/controllers/squad-controller.js'
     }
 });

@@ -1,9 +1,9 @@
 import { requester } from 'requester';
 import { localStorer } from 'local-storer';
+import { squadData } from 'squad-data';
 
-
-const APP_KEY = 'kid_rk1gva0Al';
-const APP_SECRET = '8cf9f89958854f34a6948d7afffd6942';
+const APP_KEY = 'kid_S1wy8b41W';
+const APP_SECRET = 'a69edf81880b4454ae540916a7625cd9';
 const APP_BASE_URL = 'https://baas.kinvey.com';
 
 const AUTH_TOKEN_STORAGE = 'auth-token';
@@ -49,7 +49,14 @@ function userRegister(user) {
 
     user.password = CryptoJS.SHA1(user.password).toString();
 
-    return requester.postJSON(`${APP_BASE_URL}/user/${APP_KEY}`, user, headers);
+    return requester.postJSON(`${APP_BASE_URL}/user/${APP_KEY}`, user, headers)
+        .then((data) => {
+            localStorer.setItem(USERNAME_STORAGE, data.username);
+            localStorer.setItem(AUTH_TOKEN_STORAGE, data._kmd.authtoken);
+            localStorer.setItem(USER_ID_STORAGE, data._id);
+
+            squadData.saveSquad({});
+        });
 }
 
 function userGetInfo() {

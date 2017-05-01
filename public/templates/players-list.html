@@ -49,15 +49,11 @@
         <li><a href="#{{leftArrow}}">&lt;</a></li>
         <li><a href="#1">1</a></li>
         <li><a href="#{{leftMiddle}}">...</a></li>
-        {{/if}}
-        {{#each pages}}
-        {{#if isCurrent}}
+        {{/if}} {{#each pages}} {{#if isCurrent}}
         <li class="active"><a href="#{{page}}">{{page}}</a></li>
         {{else}}
         <li><a href="#{{page}}">{{page}}</a></li>
-        {{/if}}
-        {{/each}}
-        {{#if rightArrow}}
+        {{/if}} {{/each}} {{#if rightArrow}}
         <li><a href="#{{rightMiddle}}">...</a></li>
         <li><a href="#{{totalPages}}">{{totalPages}}</a></li>
         <li><a href="#{{rightArrow}}">&gt;</a></li>

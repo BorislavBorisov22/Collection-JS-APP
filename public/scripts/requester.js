@@ -14,7 +14,6 @@ function request(url, method, contentType = '', body = {}, headers = {}) {
     return promise;
 }
 
-
 function get(url) {
     return request(url, 'GET');
 }

@@ -1,0 +1,126 @@
+<div class="row">
+    <div id="owned-footballers-container" class="col-sm-6">
+        {{#if ownedPlayers.length}} {{#ownedPlayers}}
+        <div class="player-card album-card {{color}} {{#if purchased}}purchased{{/if}}">
+            <img data-player-name="{{name}}" class="headshot-img" src="{{headshot.medImgUrl}}" alt="{{name}}">
+            <p class="position">{{position}}</p>
+            <img class="club-img" src="{{club.imageUrls.normal.medium}}" alt="{{club.name}}">
+            <img class="nation-img" src="{{nation.imageUrls.medium}}" alt="{{nation.name}}">
+            <section class="details">
+                <p class="name">{{name}}</p>
+                <section class="additional-player-info">
+                    <span class="text-warning" href="#">Age <span class="badge">{{age}}</span></span><br>
+                    <span class="text-warning" href="#">Rating <span class="badge">{{rating}}</span></span><br>
+                    <span class="text-warning" href="#">Potential <span class="badge">{{potential}}</span></span><br>
+                </section>
+                <a href="#/players/sell/{{id}}" class="btn btn-danger btn-sm btn-sell-player">Sell</a>
+            </section>
+        </div>
+        {{/ownedPlayers}} {{else}}
+        <h3 class="text-danger">You currently have no players added in your collection!</h3>
+        <img src="../styles/images/balotelli-crying.jpg"> {{/if}}
+    </div>
+    <div id="football-pitch-container" class="col-sm-5">
+        <div class="row" id="forwards-pitch-position">
+            <div id="left-striker" class="col-sm-3 player-shirt">
+                <div class="shirt-name">
+                    {{squad.leftstriker}}
+                </div>
+                <div class="shirt-number">
+                    11
+                </div>
+            </div>
+            <div id="center-striker" class="col-sm-3 player-shirt">
+                <div class="shirt-name">
+                    {{squad.centerstriker}}
+                </div>
+                <div class="shirt-number">
+                    9
+                </div>
+            </div>
+            <div id="right-striker" class="col-sm-3 player-shirt">
+                <div class="shirt-name">
+                    {{squad.rightstriker}}
+                </div>
+                <div class="shirt-number">
+                    7
+                </div>
+            </div>
+        </div>
+        <div class="row" id="midfielders-pitch-position">
+            <div id="left-midfielder" class="col-sm-3 player-shirt">
+                <div class="shirt-name">
+                    {{squad.leftmidfielder}}
+                </div>
+                <div class="shirt-number">
+                    8
+                </div>
+            </div>
+            <div id="center-midfielder" class="col-sm-3 player-shirt">
+                <div class="shirt-name">
+                    {{squad.centermidfielder}}
+                </div>
+                <div class="shirt-number">
+                    6
+                </div>
+            </div>
+            <div id="right-midfielder" class="col-sm-3 player-shirt">
+                <div class="shirt-name">
+                    {{squad.rightmidfielder}}
+                </div>
+                <div class="shirt-number">
+                    10
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="defenders-pitch-position">
+            <div id="left-back" class="col-sm-3 player-shirt">
+                <div class="shirt-name">
+                    {{squad.leftback}}
+                </div>
+                <div class="shirt-number">
+                    4
+                </div>
+            </div>
+            <div id="left-center-back" class="col-sm-3 player-shirt">
+                <div class="shirt-name">
+                    {{squad.leftcenterback}}
+                </div>
+                <div class="shirt-number">
+                    3
+                </div>
+            </div>
+            <div id="right-center-back" class="col-sm-3 player-shirt">
+                <div class="shirt-name">
+                    {{squad.rightcenterback}}
+                </div>
+                <div class="shirt-number">
+                    5
+                </div>
+            </div>
+            <div id="right-back" class="col-sm-3 player-shirt">
+                <div class="shirt-name">
+                    {{squad.rightback}}
+                </div>
+                <div class="shirt-number">
+                    2
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="goalkeeper-pitch-position">
+            <div id="goalkeeper" class="col-sm-3 player-shirt">
+                <div class="shirt-name">
+                    {{squad.goalkeeper}}
+                </div>
+                <div class="shirt-number">
+                    1
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-offest-2 col-sm-pull-1">
+        <a class="btn btn-success btn-md" href="#/squad/save">Save Squad</a>
+    </div>
+</div>

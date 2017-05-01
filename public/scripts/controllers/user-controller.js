@@ -5,7 +5,7 @@ import { validator } from 'validator';
 import { utils } from 'utils';
 
 const $container = $('#container');
-const INITIAL_USER_COINS = 10000;
+const INITIAL_USER_COINS = 60000;
 
 const userController = {
     login(context) {
@@ -42,19 +42,16 @@ const userController = {
                 $('#container').html(template());
 
                 $('#register-form').on('submit', function() {
-                    const firstName = $('#input-first-name').val(),
-                        lastName = $('#input-last-name').val(),
-                        username = $('#input-username').val(),
+                    const username = $('#input-username').val(),
                         password = $('#input-password').val(),
                         passwordRepeat = $('#input-password-repeat').val();
 
                     const user = {
-                        firstName,
-                        lastName,
                         username,
                         password,
                         coins: INITIAL_USER_COINS,
-                        purchasedPlayers: []
+                        purchasedPlayers: [],
+                        squad: {}
                     };
 
                     const promises = [
@@ -68,8 +65,8 @@ const userController = {
                             return userData.userRegister(user);
                         })
                         .then(() => {
-                            toastr.success('Please login to continue', `User ${username} registered successfully`);
-                            context.redirect('#/login');
+                            toastr.success('', `User ${username} registered successfully`);
+                            context.redirect('#/home');
                         })
                         .catch((errorMessage) => {
                             if (errorMessage.getResponseHeader) {
@@ -150,14 +147,7 @@ const userController = {
                 });
             })
             .then((userInfo) => {
-                const { purchasedPlayers, coins } = userInfo;
-
-                const info = {
-                    purchasedPlayers,
-                    coins
-                };
-
-                userData.userUpdateInfo(info);
+                userData.userUpdateInfo(userInfo);
             })
             .then(() => {
                 toastr.success("Player has been added to your collection!");
