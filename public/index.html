@@ -25,26 +25,20 @@
                 <ul class="nav navbar-nav">
                     <li id="go-to-home"><a href="#/home">Home</a></li>
                     <li id="go-to-marketplace"><a href="#/marketplace">Stickers Market</a></li>
-                    <li id="go-to-album"><a href="#/album">My Album</a></li>
-                    <li id="go-to-squad"><a href="#/squad">Squad</a></li>
+                    <li id="go-to-album" class="hidden visible-when-logged"><a href="#/album">My Album</a></li>
+                    <li id="go-to-squad" class="hidden visible-when-logged"><a href="#/squad">Squad</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li id="go-to-register" class="hidden">
+                    <li id="go-to-register" class="hidden visible-when-logged-out">
                         <a href="#/register"><span class="glyphicon glyphicon-user"></span> Register</a>
                     </li>
-                    <li id="go-to-login" class="hidden">
+                    <li id="go-to-login" class="hidden visible-when-logged-out">
                         <a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
                     </li>
-                    <li id="user-coins-container" class="hidden">
-                        <a>
-                            <span class="glyphicon glyphicon-euro"></span>
-                            <span id="user-coins"></span>
-                        </a>
-                    </li>
-                    <li class="hidden" id="username-display">
+                    <li class="hidden visible-when-logged" id="username-display">
                         <a href="#/home "></a>
                     </li>
-                    <li id="btn-logout" class="hidden">
+                    <li id="btn-logout" class="hidden visible-when-logged">
                         <a href="#/logout"><span class="glyphicon glyphicon-off"></span> Logout</a>
                     </li>
                 </ul>

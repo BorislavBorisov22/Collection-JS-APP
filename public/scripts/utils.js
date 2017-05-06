@@ -14,23 +14,16 @@ class Utils {
 
     toggleUserInfoDisplay() {
         if (userData.userIsLogged()) {
-            $('#go-to-login').addClass('hidden');
-            $('#go-to-register').addClass('hidden');
+            $('.visible-when-logged-out').addClass('hidden');
+            $('.visible-when-logged').removeClass('hidden');
 
             $('#username-display')
-                .removeClass('hidden')
                 .children()
                 .first()
                 .html(localStorer.getItem('username'));
-            $('#btn-logout').removeClass('hidden');
-
         } else {
-            $('#go-to-login').removeClass('hidden');
-            $('#go-to-register').removeClass('hidden');
-
-            $('#user-coins-container').addClass('hidden');
-            $('#username-display').addClass('hidden');
-            $('#btn-logout').addClass('hidden');
+            $('.visible-when-logged-out').removeClass('hidden');
+            $('.visible-when-logged').addClass('hidden');
         }
     }
 
