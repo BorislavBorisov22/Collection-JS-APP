@@ -37,6 +37,10 @@ const router = new Sammy(function() {
         squadController.show(context);
     });
 
+    this.get('#/squad/add/:playerId/:playerPosition', (context) => {
+        squadController.saveSquad(context);
+    });
+
     this.get('#/album', (context) => {
         utils.navbarSetActive('album');
         albumController.show(context);

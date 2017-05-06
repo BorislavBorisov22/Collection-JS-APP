@@ -22,7 +22,11 @@ const albumController = {
                     id: playersIds.join(',')
                 };
 
-                return playersData.getPlayers(filterOptions);
+                if (playersIds.length === 0) {
+                    return [];
+                } else {
+                    return playersData.getPlayers(filterOptions);
+                }
             })
             .then(playersData => {
                 console.log(playersData.items);

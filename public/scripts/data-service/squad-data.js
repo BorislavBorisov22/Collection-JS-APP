@@ -15,16 +15,32 @@ const squadData = {
         return requester.getJSON(`${BASE_URL}/appdata/${APP_KEY}/squads/${localStorer.getItem(USERNAME_STORAGE)}`, headers)
             .then(data => data.squad);
     },
-    saveSquad(squad) {
+    saveSquad(playerPosition, playerInfo) {
+        const headers = {
+            Authorization: `Kinvey ${localStorer.getItem(AUTH_TOKEN_STORAGE)}`
+        };
+
+        return this.getSquad()
+            .then(squad => {
+                squad[playerPosition] = playerInfo;
+
+                const body = {
+                    squad: squad
+                };
+
+                return requester.putJSON(`${BASE_URL}/appdata/${APP_KEY}/squads/${localStorer.getItem(USERNAME_STORAGE)}`, body, headers);
+            });
+    },
+    initializeSquad() {
         const headers = {
             Authorization: `Kinvey ${localStorer.getItem(AUTH_TOKEN_STORAGE)}`
         };
 
         const body = {
-            squad: squad,
+            squad: {}
         };
 
-        return requester.putJSON(`${BASE_URL}/appdata/${APP_KEY}/squads/${localStorer.getItem(USERNAME_STORAGE)}`, body, headers)
+        return requester.putJSON(`${BASE_URL}/appdata/${APP_KEY}/squads/${localStorer.getItem(USERNAME_STORAGE)}`, body, headers);
     },
     removePlayer(player) {
         this.getSquad()

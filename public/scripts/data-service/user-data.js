@@ -55,7 +55,7 @@ function userRegister(user) {
             localStorer.setItem(AUTH_TOKEN_STORAGE, data._kmd.authtoken);
             localStorer.setItem(USER_ID_STORAGE, data._id);
 
-            squadData.saveSquad({});
+            squadData.initializeSquad({});
         });
 }
 

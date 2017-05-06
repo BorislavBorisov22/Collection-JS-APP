@@ -219,12 +219,30 @@ body {
     background-size: 100%;
 }
 
-.squad-player-card img {
+.squad-player-card .add-to-squad-image {
     width: 45%;
     height: 30%;
     position: relative;
     left: 30%;
     top: 15%;
+    z-index: 9990
+}
+
+.squad-player-card .squad-player-image {
+    width: 100%;
+    height: 50%;
+    position: relative;
+    left: 2%;
+    top: 7%;
+}
+
+.squad-player-card .squad-player-name {
+    position: absolute;
+    color: white;
+    top: 130px;
+    right: 25px;
+    font-size: 20px;
+    text-align: center;
 }
 
 #squad-container {
@@ -263,4 +281,16 @@ body {
     overflow-y: scroll;
     margin-left: 20%;
     margin-top: 5%;
+}
+
+.scaled {
+    transform: scale(0.8, 0.8);
+    -ms-transform: scale(0.8, 0.8);
+    /* IE 9 */
+    -webkit-transform: scale(0.8, 0.8);
+    /* Safari and Chrome */
+    -o-transform: scale(0.8, 0.8);
+    /* Opera */
+    -moz-transform: scale(0.8, 0.8);
+    /* Firefox */
 }
