@@ -1,5 +1,7 @@
 body {
     font-family: sans-serif;
+    overflow-x: hidden;
+    background-repeat: no-repeat;
 }
 
 .hidden {
@@ -209,124 +211,56 @@ body {
     bottom: 50px;
 }
 
-#football-pitch-container {
-    background: url('./images/football-pitch-background/football-pitch.png') center no-repeat;
-    background-size: 100%;
-    min-height: 570px;
-    border-radius: 15px;
-    margin-left: 5px;
-    margin-right: 2px;
-}
-
-#owned-footballers-container {
-    /*background-color: lightgrey;*/
-    /*border: 1px solid deeppink;*/
-    border-radius: 10px;
-    max-height: 570px;
-    overflow-y: scroll;
-    direction: rtl;
-    text-align: left;
-}
-
-.headshot-img {
-    z-index: 1000;
-}
-
-.player-shirt {
-    background: url('../styles/images/football-shirt-template.png');
+.squad-player-card {
+    background: url("./images/squad-card-template.png");
     background-repeat: no-repeat;
-    background-size: 90px 70px;
-    display: inline-block;
-    width: 90px;
-    height: 70px;
-    margin: 2.5em;
+    width: 100px;
+    height: 150px;
+    background-size: 100%;
+}
+
+.squad-player-card img {
+    width: 45%;
+    height: 30%;
     position: relative;
-    left: 1em;
+    left: 30%;
+    top: 15%;
 }
 
-.shirt-number {
-    text-align: center;
-    font-size: 35px;
-    position: relative;
-    color: white;
-}
-
-.shirt-name {
-    text-align: center;
-    letter-spacing: -1px;
-    color: white;
-    position: relative;
-    top: 5px;
-}
-
-#forwards-pitch-position {
-    position: relative;
-    left: 40px;
-    top: 20px;
-}
-
-#midfielders-pitch-position {
-    position: relative;
-    left: 35px;
-    top: 50px;
-}
-
-#center-midfielder {
+#squad-container {
     position: absolute;
-    left: 170px;
-    top: 40px;
+    bottom: 5px;
+    background: url("./images/football-stadium-bg.jpeg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    padding-top: 25%;
+    padding-left: 10%;
 }
 
-#left-midfielder {
+.player-position {
+    color: gold;
     position: absolute;
-    top: -10px;
-    left: 50px;
+    top: 60%;
+    left: 40%;
 }
 
-#right-midfielder {
+.blurred {
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
+
+#add-to-squad-container {
     position: absolute;
-    left: 300px;
-    top: -10px;
-}
-
-#left-back {
-    position: absolute;
-    left: 35px;
-    top: 310px;
-}
-
-#left-center-back {
-    position: absolute;
-    top: 360px;
-    left: 140px;
-}
-
-#right-center-back {
-    position: absolute;
-    top: 360px;
-    left: 270px;
-}
-
-#right-back {
-    position: absolute;
-    top: 310px;
-    left: 375px;
-}
-
-#goalkeeper {
-    position: absolute;
-    top: 445px;
-    left: 205px;
-}
-
-.scaled {
-    transform: scale(0.3, 0.3);
-    -ms-transform: scale(0.3, 0.3);
-    /* IE 9 */
-    -webkit-transform: scale(0.3, 0.3);
-    /* Safari and Chrome */
-    -o-transform: scale(0.3, 0.3);
-    /* Opera */
-    -moz-transform: scale(0.3, 0.3);
-    /* Firefox */
+    z-index: 9999;
+    width: 60%;
+    height: 60%;
+    overflow-y: scroll;
+    margin-left: 20%;
+    margin-top: 5%;
 }

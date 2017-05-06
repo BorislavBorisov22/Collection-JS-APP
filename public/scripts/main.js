@@ -33,6 +33,10 @@ const router = new Sammy(function() {
         userController.logout(context);
     });
 
+    this.get('#/squad', (context) => {
+        squadController.show(context);
+    });
+
     this.get('#/album', (context) => {
         utils.navbarSetActive('album');
         albumController.show(context);
