@@ -1,5 +1,6 @@
 import { userData } from 'user-data';
 import { templateLoader } from 'template-loader';
+import { notificator } from 'notificator';
 
 const $container = $('#container');
 
@@ -12,7 +13,7 @@ const bonusController = {
         templateLoader.load('bonus')
             .then((template) => {
                 $container.html(template());
-                
+
                 const $wheel = $('#wheel');
                 $wheel.css('transition', 'all ' + duration + 'ms ease-in-out');
 
@@ -20,10 +21,12 @@ const bonusController = {
                 let previousRotation = 0;
                 let lastClickTime = new Date(0);
 
+                let coinsWon;
                 $wheel.on('click', function() {
-                    if (Date.now() - lastClickTime - cooldown < duration){
+                    if (Date.now() - lastClickTime - cooldown < duration) {
                         return;
                     }
+
                     previousRotation = rotation;
                     rotation += parseInt(Math.random() * 360 + 180);
                     lastClickTime = Date.now();
@@ -33,14 +36,23 @@ const bonusController = {
                         'transition-duration': duration + 'ms'
                     });
                     new Promise((resolve) => {
-                        setTimeout(resolve, duration);
-                    }).then(() => {
-                        const actualDegrees = Math.abs(rotation) % 360;
-                        const sectors = 360 / wheelPrizes.length;
+                            setTimeout(resolve, duration);
+                        }).then(() => {
+                            const actualDegrees = Math.abs(rotation) % 360;
+                            const sectors = 360 / wheelPrizes.length;
 
-                        const prize = wheelPrizes[actualDegrees / sectors | 0];
-                        alert('You won: ' + prize);
-                    });
+                            const prize = wheelPrizes[actualDegrees / sectors | 0];
+                            coinsWon = prize;
+
+                            return userData.userGetInfo();
+                        })
+                        .then(userInfo => {
+                            userInfo.coins = userInfo.coins + coinsWon;
+                            return userData.userUpdateInfo(userInfo);
+                        })
+                        .then(() => {
+                            notificator.success(`You have been granted ${coinsWon} coins!`);
+                        });
                 });
             });
     }
