@@ -8,6 +8,11 @@ body {
     display: none;
 }
 
+.toastr-position {
+    top: 60px;
+    right: 5px;
+}
+
 #container {
     margin: 0 auto;
     max-width: 1600px;
@@ -200,15 +205,17 @@ body {
 
 #squad-container {
     position: absolute;
-    bottom: 5px;
+    top: 52px;
+    left: 0;
     background: url("./images/football-stadium-bg.jpeg");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    padding-top: 10vh;
     width: 100%;
-    padding-top: 25%;
-    padding-left: 10%;
+    height: 90vh; /* old browsers */
+    height: calc(100vh - 52px);
 }
 
 .player-position {

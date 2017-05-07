@@ -46,6 +46,10 @@ class Utils {
     firstLetterToUpper(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
+
+    setToastrPos() {
+        toastr.options.positionClass = 'toastr-position';
+    }
 }
 
 const utils = new Utils();
