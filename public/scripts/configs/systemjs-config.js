@@ -20,6 +20,7 @@ SystemJS.config({
         'squad-controller': './scripts/controllers/squad-controller.js',
         'trade-controller': './scripts/controllers/trade-controller.js',
         'notificator': './scripts/notificator.js',
-        'bonus-controller': './scripts/controllers/bonus-controller.js'
+        'bonus-controller': './scripts/controllers/bonus-controller.js',
+        'sharing-configurator': './scripts/configs/sharing-configurator.js',
     }
 });

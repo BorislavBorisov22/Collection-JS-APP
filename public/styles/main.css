@@ -152,7 +152,7 @@ body {
     background-color: #101010;
 }
 
-.box > a {
+.box>a {
     line-height: 60px;
 }
 
@@ -213,9 +213,12 @@ body {
     -o-background-size: cover;
     background-size: cover;
     padding-top: 10vh;
+    padding-left: 10%;
     width: 100%;
-    height: 90vh; /* old browsers */
-    height: calc(100vh - 52px);
+    height: 110%;
+    /*height: 100vh;
+    /* old browsers */
+    /*height: calc(100vh - 52px);*/
 }
 
 .player-position {
@@ -235,7 +238,7 @@ body {
 
 #add-to-squad-container {
     position: absolute;
-    z-index: 9999;
+    z-index: 999;
     width: 60%;
     height: 60%;
     overflow-y: scroll;

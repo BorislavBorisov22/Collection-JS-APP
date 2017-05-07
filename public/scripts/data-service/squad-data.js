@@ -3,6 +3,7 @@ import { localStorer } from 'local-storer';
 
 const BASE_URL = 'https://baas.kinvey.com';
 const APP_KEY = 'kid_S1wy8b41W';
+const APP_SECRET = 'a69edf81880b4454ae540916a7625cd9';
 const AUTH_TOKEN_STORAGE = 'auth-token';
 const USERNAME_STORAGE = 'username';
 
@@ -13,6 +14,14 @@ const squadData = {
         };
 
         return requester.getJSON(`${BASE_URL}/appdata/${APP_KEY}/squads/${localStorer.getItem(USERNAME_STORAGE)}`, headers)
+            .then(data => data.squad);
+    },
+    getOtherUserSquad(username) {
+        const headers = {
+            Authorization: `Basic ${btoa(APP_KEY + ":" + APP_SECRET)}`
+        };
+
+        return requester.getJSON(`${BASE_URL}/appdata/${APP_KEY}/squads/${username}`, headers)
             .then(data => data.squad);
     },
     saveToSquad(playerPosition, playerInfo) {
@@ -58,19 +67,18 @@ const squadData = {
             .then(squad => {
                 return new Promise((resolve, reject) => {
                         const positions = Object.keys(squad);
+
                         const positionsToRemove = positions.filter(prop => {
-                            console.log(squad[prop].id + " " + player.id);
                             return squad[prop].id === player.id;
                         });
 
-                        if (positionsToRemove.length) {
-                            positionsToRemove.forEach(prop => {
-                                delete squad[prop];
-                            });
-                            resolve(squad);
-                        } else {
-                            reject(`${player.name} is not present in this squad`);
-                        }
+
+                        positionsToRemove.forEach(prop => {
+                            delete squad[prop];
+                        });
+
+                        resolve(squad);
+
                     })
                     .then((squad) => {
                         this.saveAll(squad);
