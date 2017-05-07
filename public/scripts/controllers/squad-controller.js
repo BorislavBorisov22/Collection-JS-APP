@@ -3,11 +3,18 @@ import { notificator } from 'notificator';
 import { templateLoader } from 'template-loader';
 import { userData } from 'user-data';
 import { playersData } from 'players-data';
+import { utils } from 'utils';
 
 const $container = $('#container');
 
 const squadController = {
     show() {
+        if (!userData.userIsLogged()) {
+            return;
+        }
+
+        utils.showLoadingAnimation();
+
         const promises = [templateLoader.load('squad'), squadData.getSquad()];
         Promise.all(promises)
             .then(data => {
@@ -24,6 +31,7 @@ const squadController = {
             })
             .then(() => {
                 notificator.warning('Click on any position you want to add or change player', 'Build your dream squad!', 10000111111);
+                utils.hideLoadingAnimation(600);
             });
 
         templateLoader.load('squad')
@@ -36,19 +44,19 @@ const squadController = {
                 });
             });
     },
-    saveSquad(context) {
-        //#/squad/add/:playerId/:playerPosition
+    saveToSquad(context) {
         let { playerId, playerPosition } = context.params;
         playerPosition = playerPosition.split('-').join('');
 
         playersData.getPlayerById(playerId)
             .then((player) => {
                 const playerInfo = {
+                    id: player.id,
                     img: player.headshotImgUrl,
                     name: player.name
                 };
 
-                return squadData.saveSquad(playerPosition, playerInfo);
+                return squadData.saveToSquad(playerPosition, playerInfo);
             })
             .then(() => {
                 context.redirect('#/squad');

@@ -2,10 +2,9 @@ import { userController } from 'user-controller';
 import { playersController } from 'players-controller';
 import { homeController } from 'home-controller';
 import { squadController } from 'squad-controller';
-import { userData } from 'user-data';
-import { utils } from 'utils';
 import { albumController } from 'album-controller';
 import { tradeController } from 'trade-controller';
+import { utils } from 'utils';
 
 const router = new Sammy(function() {
     this.before(utils.toggleUserInfoDisplay);
@@ -34,11 +33,12 @@ const router = new Sammy(function() {
     });
 
     this.get('#/squad', (context) => {
+        utils.navbarSetActive('squad');
         squadController.show(context);
     });
 
     this.get('#/squad/add/:playerId/:playerPosition', (context) => {
-        squadController.saveSquad(context);
+        squadController.saveToSquad(context);
     });
 
     this.get('#/album', (context) => {

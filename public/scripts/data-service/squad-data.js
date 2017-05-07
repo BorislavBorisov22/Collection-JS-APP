@@ -15,7 +15,7 @@ const squadData = {
         return requester.getJSON(`${BASE_URL}/appdata/${APP_KEY}/squads/${localStorer.getItem(USERNAME_STORAGE)}`, headers)
             .then(data => data.squad);
     },
-    saveSquad(playerPosition, playerInfo) {
+    saveToSquad(playerPosition, playerInfo) {
         const headers = {
             Authorization: `Kinvey ${localStorer.getItem(AUTH_TOKEN_STORAGE)}`
         };
@@ -31,6 +31,17 @@ const squadData = {
                 return requester.putJSON(`${BASE_URL}/appdata/${APP_KEY}/squads/${localStorer.getItem(USERNAME_STORAGE)}`, body, headers);
             });
     },
+    saveAll(squad) {
+        const headers = {
+            Authorization: `Kinvey ${localStorer.getItem(AUTH_TOKEN_STORAGE)}`
+        };
+
+        const body = {
+            squad
+        };
+
+        return requester.putJSON(`${BASE_URL}/appdata/${APP_KEY}/squads/${localStorer.getItem(USERNAME_STORAGE)}`, body, headers);
+    },
     initializeSquad() {
         const headers = {
             Authorization: `Kinvey ${localStorer.getItem(AUTH_TOKEN_STORAGE)}`
@@ -43,37 +54,29 @@ const squadData = {
         return requester.putJSON(`${BASE_URL}/appdata/${APP_KEY}/squads/${localStorer.getItem(USERNAME_STORAGE)}`, body, headers);
     },
     removePlayer(player) {
-        this.getSquad()
+        return this.getSquad()
             .then(squad => {
                 return new Promise((resolve, reject) => {
                         const positions = Object.keys(squad);
-
-                        const playerName = this.getPlayerCommonName(player);
-
-                        const positionsToRemove = positions.filter(prop => squad[prop] === playerName);
+                        const positionsToRemove = positions.filter(prop => {
+                            console.log(squad[prop].id + " " + player.id);
+                            return squad[prop].id === player.id;
+                        });
 
                         if (positionsToRemove.length) {
-                            positionsToRemove.forEach(prop => squad[prop] = '');
+                            positionsToRemove.forEach(prop => {
+                                delete squad[prop];
+                            });
                             resolve(squad);
                         } else {
-                            reject(`${player.firstName} is not present in this squad`);
+                            reject(`${player.name} is not present in this squad`);
                         }
                     })
                     .then((squad) => {
-                        this.saveSquad(squad);
+                        this.saveAll(squad);
                     });
             });
     },
-    getPlayerCommonName(player) {
-        let name = player.name;
-
-        if (name.indexOf(' ') < 0) {
-            return name;
-        }
-
-        name = name.split(' ')[1];
-        return name;
-    }
 };
 
 export { squadData };

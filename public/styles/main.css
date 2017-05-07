@@ -238,8 +238,8 @@ body {
 
 .squad-player-card .squad-player-name {
     position: absolute;
-    color: white;
-    top: 130px;
+    color: black;
+    top: 120px;
     right: 25px;
     font-size: 20px;
     text-align: center;

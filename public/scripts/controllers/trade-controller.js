@@ -68,6 +68,10 @@ const tradeController = {
             });
     },
     sellPlayer(context) {
+        if (userData.userIsLogged()) {
+            return;
+        }
+
         const playerId = context.params.id;
 
         const promises = [playersData.getPlayerById(playerId), userData.userGetInfo()];

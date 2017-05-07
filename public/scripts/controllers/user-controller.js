@@ -10,6 +10,10 @@ const INITIAL_USER_COINS = 60000;
 
 const userController = {
     login(context) {
+        if (userData.userIsLogged()) {
+            return;
+        }
+
         templateLoader.load('login')
             .then((template) => {
                 $container.html(template());
@@ -38,6 +42,10 @@ const userController = {
             });
     },
     register(context) {
+        if (userData.userIsLogged()) {
+            return;
+        }
+
         templateLoader.load('register')
             .then((template) => {
                 $('#container').html(template());
@@ -81,6 +89,10 @@ const userController = {
             });
     },
     logout(context) {
+        if (!userData.userIsLogged()) {
+            return;
+        }
+
         userData.userLogout()
             .then(() => {
                 notificator.success('You have logged out successfully!');

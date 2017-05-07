@@ -20,5 +20,6 @@ SystemJS.config({
         'squad-controller': './scripts/controllers/squad-controller.js',
         'trade-controller': './scripts/controllers/trade-controller.js',
         'notificator': './scripts/notificator.js',
+        'daily-bonus-controller': './scripts/controllers/daily-bonus-controller.js'
     }
 });
