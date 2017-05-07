@@ -4,6 +4,7 @@ import { homeController } from 'home-controller';
 import { squadController } from 'squad-controller';
 import { albumController } from 'album-controller';
 import { tradeController } from 'trade-controller';
+import { bonusController } from 'bonus-controller';
 import { utils } from 'utils';
 
 const router = new Sammy(function() {
@@ -62,5 +63,10 @@ const router = new Sammy(function() {
 
     this.get('#/players/sell/:id', (context) => {
         tradeController.sellPlayer(context);
+    });
+
+    this.get('#/bonus', (context) => {
+        utils.navbarSetActive('daily-bonus');
+        bonusController.show(context);
     });
 }).run('#/home');
