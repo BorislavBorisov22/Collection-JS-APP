@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../scripts/node_modules/mocha/mocha.css">
+    <title>FUT Collection</title>
+</head>
+
+<body>
+    <div id="mocha">
+
+    </div>
+
+    <!-- External libraries -->
+    <script src="../scripts/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../scripts/plugins/nice-scroll.js"></script>
+    <script src="../scripts/bower_components/sammy/lib/sammy.js"></script>
+    <script src="../scripts/node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="../scripts/node_modules/systemjs/dist/system.js"></script>
+    <script src="../scripts/bower_components/toastr/toastr.js"></script>
+    <script src="../scripts/bower_components/crypto-js/crypto-js.js"></script>
+    <script src="../scripts/bower_components/bootstrap-sweetalert/dist/sweetalert.js"></script>
+    <script src="../scripts/bower_components/jquery-ui/jquery-ui.js"></script>
+
+    <!-- SystemJS configs -->
+    <script src="./configs/systemjs-config.js"></script>
+
+    <!--Libraries needed for testing -->
+    <script src="../scripts/node_modules/mocha/mocha.js"></script>
+    <script src="../scripts/node_modules/chai/chai.js"></script>
+    <script src="../scripts/node_modules/sinon/pkg/sinon.js"></script>
+    <script src="../scripts/node_modules/sinon-chai/lib/sinon-chai.js"></script>
+
+    <!-- Tests start -->
+    <script>
+        System.import('user-data-tests');
+    </script>
+</body>
+
+</html>
