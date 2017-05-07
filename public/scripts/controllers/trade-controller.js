@@ -68,7 +68,7 @@ const tradeController = {
             });
     },
     sellPlayer(context) {
-        if (userData.userIsLogged()) {
+        if (!userData.userIsLogged()) {
             return;
         }
 

@@ -4,6 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Meta tags for facebook-->
+    <meta property="og:url" content="http://www.your-domain.com/your-page.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sticker Football Collector" />
+    <meta property="og:description" content="Providing an easy way to collect all of your favourite players and" />
+    <meta property="og:image" content="http://www.your-domain.com/path/image.jpg" />
+    <!--End meta tags for facebook-->
     <title>FUT Collection</title>
     <link rel="icon" href="./favicon.ico">
     <link rel="stylesheet" href="./scripts/bower_components/bootstrap/dist/css/bootstrap.css">
@@ -50,9 +57,10 @@
     </header>
 
     <main id="container">
-
     </main>
 
+    <div id="btn-share-facebook" class="hidden fb-share-button" data-href="https://www.google.bg/search?q=football+image&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ved=0ahUKEwjv39vdid7TAhXEHpoKHeDoB38Q_AUIBigB&amp;biw=1366&amp;bih=659#tbm=isch&amp;q=marco+reus&amp;imgrc=vDGqMr0bBkesXM:"
+        data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.google.bg%2Fsearch%3Fq%3Dfootball%2Bimage%26source%3Dlnms%26tbm%3Disch%26sa%3DX%26ved%3D0ahUKEwjv39vdid7TAhXEHpoKHeDoB38Q_AUIBigB%26biw%3D1366%26bih%3D659%23tbm%3Disch%26q%3Dmarco%2Breus%26imgrc%3DvDGqMr0bBkesXM%3A&amp;src=sdkpreparse">Споделяне</a></div>
     <!-- External libraries -->
     <script src="./scripts/node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./scripts/plugins/nice-scroll.js"></script>
@@ -68,6 +76,7 @@
     <script src="./scripts/handlebars-helpers/pagination.js"></script>
     <!-- SystemJS configs -->
     <script src="./scripts/configs/systemjs-config.js"></script>
+
     <!-- App start -->
     <script>
         System.import('main');

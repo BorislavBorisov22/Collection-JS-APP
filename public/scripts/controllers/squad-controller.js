@@ -4,11 +4,12 @@ import { templateLoader } from 'template-loader';
 import { userData } from 'user-data';
 import { playersData } from 'players-data';
 import { utils } from 'utils';
+import { shareConfigurator } from 'sharing-configurator';
 
 const $container = $('#container');
 
 const squadController = {
-    show() {
+    show(context) {
         if (!userData.userIsLogged()) {
             return;
         }
@@ -23,25 +24,21 @@ const squadController = {
 
                 $container.html(template(squad));
                 $('.squad-player-card').on('click', function() {
+                    if (!userData.userIsLogged()) {
+                        return;
+                    }
+
                     const $this = $(this);
 
                     showFullSquad($this.attr('data-player-position'));
                 });
 
+                $('#btn-share-facebook').removeClass('hidden');
             })
             .then(() => {
                 notificator.warning('Click on any position you want to add or change player', 'Build your dream squad!', 10000111111);
                 utils.hideLoadingAnimation(600);
-            });
-
-        templateLoader.load('squad')
-            .then(template => {
-                $container.html(template());
-
-                $('.squad-player-card').on('click', function() {
-                    const $this = $(this);
-                    showFullSquad($this.attr('data-player-position'));
-                });
+                shareConfigurator.configurateFacebook();
             });
     },
     saveToSquad(context) {

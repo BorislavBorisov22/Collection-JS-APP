@@ -13,6 +13,8 @@ class Utils {
     }
 
     toggleUserInfoDisplay() {
+        $('#btn-share-facebook').addClass('hidden');
+
         if (userData.userIsLogged()) {
             $('.visible-when-logged-out').addClass('hidden');
             $('.visible-when-logged').removeClass('hidden');

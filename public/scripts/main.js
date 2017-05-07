@@ -4,6 +4,7 @@ import { homeController } from 'home-controller';
 import { squadController } from 'squad-controller';
 import { albumController } from 'album-controller';
 import { tradeController } from 'trade-controller';
+import { shareConfigurator } from 'sharing-configurator';
 import { utils } from 'utils';
 
 const router = new Sammy(function() {
