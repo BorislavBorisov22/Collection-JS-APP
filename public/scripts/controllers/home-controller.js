@@ -13,7 +13,6 @@ const homeController = {
         templateLoader.load('home')
             .then((template) => {
                 $appContainer.html(template());
-                console.log("works2");
             });
     }
 };

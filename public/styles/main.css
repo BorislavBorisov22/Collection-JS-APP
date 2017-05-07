@@ -126,76 +126,29 @@ body {
     background: url("./images/preloader.gif") center no-repeat #fff;
 }
 
-.gif {
-    min-height: 80%;
-    min-width: 1024px;
-    width: 100%;
-    height: auto;
-    /* Set up positioning */
+#video-container {
     position: absolute;
-    display: inline-block;
-    top: 4%;
+    top: 52px;
     left: 0;
-    z-index: 1;
-}
-
-@media screen and (max-width: 1024px) {
-    .gif {
-        left: 50%;
-        margin-left: -512px;
-        /* 50% */
-    }
-}
-
-.navbar {
-    z-index: 2;
-}
-
-.team {
-    display: inline-block;
-    position: relative;
-    vertical-align: bottom;
-    text-align: center;
-    font-weight: bold;
-    width: 200px;
-    height: 80px;
-    margin: 6px;
-    z-index: 3;
-    background-color: #101010;
-    float: left;
-}
-
-.play {
-    display: inline-block;
-    position: relative;
-    vertical-align: bottom;
-    text-align: center;
-    font-weight: bold;
-    width: 200px;
-    height: 80px;
-    margin: 6px;
-    z-index: 3;
-    background-color: #101010;
-    float: left;
-}
-
-.box3 {
-    display: inline-block;
-    position: relative;
-    vertical-align: bottom;
-    text-align: center;
-    font-weight: bold;
-    width: 200px;
-    height: 80px;
-    margin: 6px;
-    z-index: 3;
-    background-color: #101010;
-    float: left;
 }
 
 .boxes {
-    top: 250%;
-    margin-top: 50%;
+    text-align: center;
+}
+
+.box {
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 1%;
+    width: 30%;
+    height: 60px;
+    background-color: #101010;
+}
+
+.box > a {
+    line-height: 60px;
 }
 
 .additional-player-info {
