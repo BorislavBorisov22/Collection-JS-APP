@@ -4,10 +4,6 @@ import { requester } from 'requester';
 import { encryptor } from 'encryptor';
 import { squadData } from 'squad-data';
 
-mocha.setup('bdd');
-const { expect } = chai;
-
-
 describe('userData Tests', () => {
     const AUTH_TOKEN_STORAGE = 'auth-token';
     const USERNAME_STORAGE = 'username';
@@ -682,5 +678,3 @@ describe('userData Tests', () => {
 
     });
 });
-
-mocha.run();

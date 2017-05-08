@@ -33,9 +33,17 @@
     <script src="../scripts/node_modules/sinon/pkg/sinon.js"></script>
     <script src="../scripts/node_modules/sinon-chai/lib/sinon-chai.js"></script>
 
-    <!-- Tests start -->
     <script>
-        System.import('user-data-tests');
+        mocha.setup('bdd');
+        const {
+            expect
+        } = chai;
+
+        Promise.all([
+                System.import('./test-files/user-data-tests.js'),
+                System.import('./test-files/squad-data-tests.js'),
+            ])
+            .then(() => mocha.run());
     </script>
 </body>
 

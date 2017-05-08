@@ -25,6 +25,7 @@ SystemJS.config({
         'encryptor': '../scripts/encryptor.js',
 
         // testing files
-        'user-data-tests': './test-files/user-data-tests.js'
+        'user-data-tests': './test-files/user-data-tests.js',
+        'squad-data-tests': './test-files/squad-data-tests.js',
     }
 });
