@@ -89,6 +89,7 @@ const bonusController = {
                     .then(prize => {
                         coinsWon = prize;
                         userInfo.coins += coinsWon;
+                        utils.updateOnScreenCoins(userInfo.coins);
                         return userData.userUpdateInfo(userInfo);
                     })
                     .then(() => {
@@ -130,6 +131,7 @@ const bonusController = {
                     userInfo.coins = 0;
                 }
 
+                utils.updateOnScreenCoins(userInfo.coins);
                 return userData.userUpdateInfo(userInfo);
             })
             .then(() => {
