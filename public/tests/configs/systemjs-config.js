@@ -24,8 +24,9 @@ SystemJS.config({
         'sharing-configurator': '../scripts/configs/sharing-configurator.js',
         'encryptor': '../scripts/encryptor.js',
 
-        // testing files
-        'user-data-tests': './test-files/user-data-tests.js',
-        'squad-data-tests': './test-files/squad-data-tests.js',
+        // // testing files
+        // 'user-data-tests': './test-files/user-data-tests.js',
+        // 'squad-data-tests': './test-files/squad-data-tests.js',
+        // 'players-data-tests': './test-files/players-data-tests.js',
     }
 });

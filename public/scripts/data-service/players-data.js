@@ -12,7 +12,6 @@ const playersData = {
                 } else {
                     filterOptions = '';
                 }
-
                 return ('/api/fut/item' + filterOptions);
             })(filterOptions);
 
@@ -28,7 +27,12 @@ const playersData = {
         });
     },
     getPlayerPrice(rating) {
-        const price = Number(rating) * PLAYER_PRICE_MULTIPLIER;
+        const ratingAsNumber = Number(rating);
+        if (Number.isNaN(ratingAsNumber)) {
+            throw Error("Rating must be convertible to number!");
+        }
+
+        const price = ratingAsNumber * PLAYER_PRICE_MULTIPLIER;
 
         return price;
     },

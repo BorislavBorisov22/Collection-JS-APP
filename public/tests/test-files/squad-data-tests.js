@@ -2,7 +2,7 @@ import { requester } from 'requester';
 import { localStorer } from 'local-storer'
 import { squadData } from 'squad-data';
 
-describe('01. SquadData Tests', () => {
+describe('* SquadData Tests', () => {
     const BASE_URL = 'https://baas.kinvey.com';
     const APP_KEY = 'kid_S1wy8b41W';
     const APP_SECRET = 'a69edf81880b4454ae540916a7625cd9';

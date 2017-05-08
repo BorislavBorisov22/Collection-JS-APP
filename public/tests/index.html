@@ -40,6 +40,7 @@
         } = chai;
 
         Promise.all([
+                System.import('./test-files/players-data-tests.js'),
                 System.import('./test-files/user-data-tests.js'),
                 System.import('./test-files/squad-data-tests.js'),
             ])

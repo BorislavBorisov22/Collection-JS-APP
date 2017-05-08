@@ -4,7 +4,7 @@ import { requester } from 'requester';
 import { encryptor } from 'encryptor';
 import { squadData } from 'squad-data';
 
-describe('userData Tests', () => {
+describe('* UserData Tests', () => {
     const AUTH_TOKEN_STORAGE = 'auth-token';
     const USERNAME_STORAGE = 'username';
     const USER_ID_STORAGE = 'user-id';
