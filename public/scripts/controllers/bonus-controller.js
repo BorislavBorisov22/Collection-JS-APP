@@ -24,7 +24,8 @@ const bonusController = {
                 userInfo = userResponse;
 
                 $container.html(template({
-                    user: userInfo
+                    user: userInfo,
+                    spinPrice: SPIN_PRICE
                 }));
 
                 const $wheel = $('#wheel');
@@ -89,6 +90,7 @@ const bonusController = {
                     .then(prize => {
                         coinsWon = prize;
                         userInfo.coins += coinsWon;
+                        utils.updateOnScreenCoins(userInfo.coins);
                         return userData.userUpdateInfo(userInfo);
                     })
                     .then(() => {
@@ -130,6 +132,7 @@ const bonusController = {
                     userInfo.coins = 0;
                 }
 
+                utils.updateOnScreenCoins(userInfo.coins);
                 return userData.userUpdateInfo(userInfo);
             })
             .then(() => {
