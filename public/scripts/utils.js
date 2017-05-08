@@ -45,6 +45,13 @@ class Utils {
         $('#go-to-' + name).addClass('active');
     }
 
+    navbarSetColor(color) {
+        $('.navbar')
+            .removeClass('navbar-default')
+            .removeClass('navbar-inverse')
+            .addClass('navbar-' + color);
+    }
+
     firstLetterToUpper(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
