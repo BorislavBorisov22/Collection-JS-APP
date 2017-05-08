@@ -22,6 +22,7 @@ SystemJS.config({
         'notificator': '../scripts/notificator.js',
         'daily-bonus-controller': '../scripts/controllers/daily-bonus-controller.js',
         'sharing-configurator': '../scripts/configs/sharing-configurator.js',
+        'encryptor': '../scripts/encryptor.js',
 
         // testing files
         'user-data-tests': './test-files/user-data-tests.js'

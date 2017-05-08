@@ -22,5 +22,6 @@ SystemJS.config({
         'notificator': './scripts/notificator.js',
         'bonus-controller': './scripts/controllers/bonus-controller.js',
         'sharing-configurator': './scripts/configs/sharing-configurator.js',
+        'encryptor': './scripts/encryptor.js'
     }
 });

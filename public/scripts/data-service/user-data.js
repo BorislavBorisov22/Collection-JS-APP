@@ -1,6 +1,7 @@
 import { requester } from 'requester';
 import { localStorer } from 'local-storer';
 import { squadData } from 'squad-data';
+import { encryptor } from 'encryptor';
 
 const APP_KEY = 'kid_S1wy8b41W';
 const APP_SECRET = 'a69edf81880b4454ae540916a7625cd9';
@@ -16,10 +17,10 @@ function userIsLogged() {
 
 function userLogin(user) {
     const headers = {
-        Authorization: `Basic ${btoa(APP_KEY + ":" + APP_SECRET)}`,
+        Authorization: `Basic ${encryptor.toBase64(APP_KEY + ":" + APP_SECRET)}`,
     };
 
-    user.password = CryptoJS.SHA1(user.password).toString();
+    user.password = encryptor.SHA1(user.password);
 
     return requester.postJSON(`${APP_BASE_URL}/user/${APP_KEY}/login`, user, headers)
         .then((data) => {
@@ -44,10 +45,10 @@ function userLogout() {
 
 function userRegister(user) {
     const headers = {
-        Authorization: `Basic ${btoa(APP_KEY + ":" + APP_SECRET)}`
+        Authorization: `Basic ${encryptor.toBase64(APP_KEY + ":" + APP_SECRET)}`
     };
 
-    user.password = CryptoJS.SHA1(user.password).toString();
+    user.password = encryptor.SHA1(user.password);
 
     return requester.postJSON(`${APP_BASE_URL}/user/${APP_KEY}`, user, headers)
         .then((data) => {
@@ -60,7 +61,7 @@ function userRegister(user) {
 }
 
 function userGetInfo() {
-    if (!userIsLogged()) {
+    if (!this.userIsLogged()) {
         return {};
     }
 
