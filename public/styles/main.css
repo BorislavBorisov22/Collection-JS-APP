@@ -276,3 +276,17 @@ body {
     border-radius: 50%;
     cursor: pointer;
 }
+
+
+.list-inline {
+    display: inline-block;
+    position: relative;
+    margin: 1%;
+    width: 30%;
+    height: 60px;
+    left: 10%;
+}
+.facebook-like {
+    position: relative;
+    padding-top: 3px;
+}
