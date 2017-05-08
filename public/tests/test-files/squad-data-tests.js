@@ -2,7 +2,7 @@ import { requester } from 'requester';
 import { localStorer } from 'local-storer'
 import { squadData } from 'squad-data';
 
-describe('SquadData Tests', () => {
+describe('01. SquadData Tests', () => {
     const BASE_URL = 'https://baas.kinvey.com';
     const APP_KEY = 'kid_S1wy8b41W';
     const APP_SECRET = 'a69edf81880b4454ae540916a7625cd9';
@@ -312,6 +312,86 @@ describe('SquadData Tests', () => {
     });
 
     describe('removePlayer tests', () => {
+        let player, squad;
 
+        beforeEach(() => {
+            player = {
+                id: 33
+            };
+
+            squad = {
+                'leftforward': {
+                    id: 33
+                }
+            };
+
+            sinon.stub(squadData, 'getSquad')
+                .returns(Promise.resolve(squad));
+
+            sinon.stub(squadData, 'saveAll')
+                .returns(Promise.resolve());
+        });
+
+        afterEach(() => {
+            squadData.saveAll.restore();
+            squadData.getSquad.restore();
+        });
+
+        it('expect to return a promise', (done) => {
+            const returnedValue = squadData.removePlayer(player)
+                .then(() => {
+                    expect(returnedValue).to.be.a('promise');
+                })
+                .then(done, done);
+        });
+
+        it('expect to remove all playerPositions that have an object with the passed player id', (done) => {
+            squadData.removePlayer(player)
+                .then(() => {
+                    expect(squad).to.not.have.ownProperty('leftforward');
+                })
+                .then(done, done);
+        });
+
+        it('expect to call saveAll function with the passed squad object', (done) => {
+            squadData.removePlayer(player)
+                .then(() => {
+                    expect(squadData.saveAll.firstCall.args[0]).to.deep.equal(squad);
+                })
+                .then(done, done);
+        });
+
+        it('expect to call saveAll function once when getSuad returned promise is resolved', (done) => {
+            squadData.removePlayer(player)
+                .then(() => {
+                    expect(squadData.saveAll).to.be.calledOnce;
+                })
+                .then(done, done);
+        });
+
+        it('expect not to change the passed squad object when there is no player with the passeed player id', (done) => {
+            player.id = 1;
+            const expectedSquad = {
+                'leftforward': {
+                    id: 33
+                }
+            };
+
+            squadData.removePlayer(player)
+                .then(() => {
+                    expect(squad).to.deep.equal(expectedSquad);
+                })
+                .then(done, done);
+        });
+
+        it('expect not to call squadData.saveAll when getSquad returned promise is rejected', (done) => {
+            squadData.getSquad.returns(Promise.reject());
+
+            squadData.removePlayer(player)
+                .then(() => {}, () => {
+                    expect(squadData.saveAll).to.have.not.been.called;
+                })
+                .then(done, done);
+        });
     });
 });
