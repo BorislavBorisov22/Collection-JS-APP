@@ -24,7 +24,8 @@ const bonusController = {
                 userInfo = userResponse;
 
                 $container.html(template({
-                    user: userInfo
+                    user: userInfo,
+                    spinPrice: SPIN_PRICE
                 }));
 
                 const $wheel = $('#wheel');
