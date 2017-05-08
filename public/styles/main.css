@@ -216,6 +216,7 @@ body {
     width: 100px;
     height: 150px;
     background-size: 100%;
+    cursor: pointer;
 }
 
 .squad-player-card .add-to-squad-image {
@@ -308,7 +309,7 @@ body {
     top: -25px;
     height: 50px;
     position: absolute;
-    left: 50%;
+    left: 55%;
     transform: translate(-50%);
     z-index: 2;
 }
@@ -316,4 +317,30 @@ body {
 #wheel {
     border-radius: 50%;
     cursor: pointer;
+}
+
+
+.list-inline {
+    display: inline-block;
+    position: relative;
+    margin: 1%;
+    width: 30%;
+    height: 60px;
+    left: 10%;
+}
+
+.facebook-like {
+    position: relative;
+    padding-top: 3px;
+}
+
+.moto {
+    width: 45%;
+    height: 30%;
+    position: relative;
+    left: 35%;
+    top: 50%;
+    font-size: 300%;
+    z-index: 2;
+    color: black;
 }
