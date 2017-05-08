@@ -287,7 +287,19 @@ body {
     height: 60px;
     left: 10%;
 }
+
 .facebook-like {
     position: relative;
     padding-top: 3px;
+}
+
+.moto {
+    width: 45%;
+    height: 30%;
+    position: relative;
+    left: 35%;
+    top: 50%;
+    font-size: 300%;
+    z-index: 2;
+    color: black;
 }
