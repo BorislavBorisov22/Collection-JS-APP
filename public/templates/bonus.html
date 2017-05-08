@@ -1,4 +1,16 @@
-<div id="wheel-container">
-    <img id="wheel-pointer" src="./styles/images/wheel-pointer.png" alt="wheel-pointer">
-    <img id="wheel" src="./styles/images/wheel.png" alt="wheel">
+<div id="bonus">
+    {{#if user.coins}}
+    <div class="row text-success">
+        <div class="col-sm-2">
+            <h2>
+                <span class="glyphicon glyphicon-euro"></span>
+                <span id="coins-count">{{user.coins}}</span>
+            </h2>
+        </div>
+    </div>
+    {{/if}}
+    <div id="wheel-container">
+        <img id="wheel-pointer" src="./styles/images/wheel-pointer.png" alt="wheel-pointer">
+        <img id="wheel" src="./styles/images/wheel.png" alt="wheel">
+    </div>
 </div>

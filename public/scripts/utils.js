@@ -52,6 +52,10 @@ class Utils {
     setToastrPos() {
         toastr.options.positionClass = 'toastr-position';
     }
+
+    updateOnScreenCoins(coins) {
+        $('#coins-count').html(coins);
+    }
 }
 
 const utils = new Utils();

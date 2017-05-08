@@ -3,6 +3,7 @@ import { playersData } from 'players-data';
 import { squadData } from 'squad-data';
 import { notificator } from 'notificator';
 import { validator } from 'validator';
+import { utils } from 'utils';
 
 const SELL_PRICE_DIVIDER = 2;
 
@@ -59,6 +60,7 @@ const tradeController = {
             })
             .then((userInfo) => {
                 userData.userUpdateInfo(userInfo);
+                utils.updateOnScreenCoins(userInfo.coins);
             })
             .then(() => {
                 notificator.success("Player has been added to your collection!");

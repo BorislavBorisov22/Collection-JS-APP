@@ -2,7 +2,10 @@
     {{#if user.coins}}
     <div class="row text-success">
         <div class="col-sm-2">
-            <h2><span class="glyphicon glyphicon-euro"></span> {{user.coins}}</h2>
+            <h2>
+                <span class="glyphicon glyphicon-euro"></span>
+                <span id="coins-count">{{user.coins}}</span>
+            </h2>
         </div>
     </div>
     {{/if}}
