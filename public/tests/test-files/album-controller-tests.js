@@ -57,7 +57,7 @@ describe('Album Controller Tests', () => {
     });
     //////////////////////////
 
-    it('expect to return a promise', (done) => {
+  /*  it('expect to return a promise', (done) => {
         let playersIds;
         playersIds = ["11"];
         const resultValue = albumController.show();
@@ -79,4 +79,5 @@ describe('Album Controller Tests', () => {
                 .then(done, done);
         
     });
+    */
 });
