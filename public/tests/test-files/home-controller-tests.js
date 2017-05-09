@@ -20,8 +20,14 @@ describe('* HomeController tests', () => {
             $.fn.html.restore();
         });
 
-        it('expect to call templateLoader load once', (done) => {
-            homeController.show()
+        it('expect home controller to be a function', () => {
+            const result = homeController.check;
+            expect(result).to.be.a('function');
+        });
+
+
+        it('expect to call templateLoader once', (done) => {
+            homeController.check()
                 .then(() => {
                     expect(templateLoader.load).to.have.been.calledOnce;
                 })
