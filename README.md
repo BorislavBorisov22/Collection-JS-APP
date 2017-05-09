@@ -11,8 +11,7 @@ https://evening-ocean-79668.herokuapp.com
 
 ### Project desctiption:
 * Application description - **Ultimate Football Sticker Collector** is a SPA (Single Page Application) in which you can choose from the most famous football
-players football and make your own undefeatable squad. You can also win coins by betting or getting you free daily spin on the wheel of fortune. Once you have players you want can build your dream team! 
-players.
+players and make your own undefeatable squad. You can also win coins by betting or getting you free daily spin on the wheel of fortune. Once you have the players you want you can build your dream team! 
 
 ### Used Libraries
 - jQuery
@@ -40,4 +39,4 @@ https://www.youtube.com/watch?v=I6jBuyd9wp4
 
 ## GitHub repository:
 
-https://github.com/Khameleon-2016/TeamWork
+https://github.com/OnocentaurTeam/Collection-JS-APP
