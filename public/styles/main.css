@@ -322,7 +322,7 @@ body {
 
 #wheel-pointer {
     top: -25px;
-    height: 50px;
+    height: 7%;
     position: absolute;
     left: 50.5%;
     transform: translate(-50%);
@@ -331,5 +331,6 @@ body {
 
 #wheel {
     border-radius: 50%;
+    width: 100%;
     cursor: pointer;
 }
