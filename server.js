@@ -25,6 +25,6 @@ server.use(express.static('public'));
 server.use('/scripts/node_modules', express.static('node_modules'));
 server.use('/scripts/bower_components', express.static('bower_components'));
 
-server.listen(80, () => {
+server.listen(5445, () => {
     console.log('Server running...');
 });
