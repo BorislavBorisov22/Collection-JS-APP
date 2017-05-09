@@ -22,7 +22,7 @@ players and make your own undefeatable squad. You can also win coins by betting 
 - Toastr
 
 ### Application images:
-![](/images/home.png)
+![](/images/add-to-squad.png)
 ![](/images/marketplace.png)
 ![](/images/spin-wheel.png)
 ![](/images/squad.png)
