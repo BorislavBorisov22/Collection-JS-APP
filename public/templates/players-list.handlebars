@@ -1,15 +1,15 @@
-<div id="marketplace">
+<section id="marketplace">
     {{#if user.coins}}
-    <div class="row text-success">
+    <section class="row text-success">
         <div class="col-sm-2">
             <h2>
                 <span class="glyphicon glyphicon-euro"></span>
                 <span id="coins-count">{{user.coins}}</span>
             </h2>
         </div>
-    </div>
+    </section>
     {{/if}}
-    <div class="form-group" id="filters">
+    <section class="form-group" id="filters">
         <div class="form-group form-inline">
             <input type="text" class="form-control input-lg" id="filter-name" placeholder="Name" value="{{filter.name}}" autocomplete="off">
             <input type="text" class="form-control input-lg" id="filter-country" placeholder="Country" value="{{filter.country}}" autocomplete="off">
@@ -24,9 +24,9 @@
                 {{/qualityList}}
             </div>
         </div>
-    </div>
+    </section>
 
-    <div id="players-container">
+    <section id="players-container">
         {{#players}}
         <div class="player-card {{color}} {{#if purchased}}purchased{{/if}}">
             <img class="headshot-img" src="{{headshot.medImgUrl}}" alt="{{name}}">
@@ -45,23 +45,25 @@
             </section>
         </div>
         {{/players}}
-    </div>
+    </section>
 
-    {{#pagination currentPage pageCount paginatorSize}}
-    <ul class="pagination">
-        {{#if leftArrow}}
-        <li><a href="#{{leftArrow}}">&lt;</a></li>
-        <li><a href="#1">1</a></li>
-        <li><a href="#{{leftMiddle}}">...</a></li>
-        {{/if}} {{#each pages}} {{#if isCurrent}}
-        <li class="active"><a href="#{{page}}">{{page}}</a></li>
-        {{else}}
-        <li><a href="#{{page}}">{{page}}</a></li>
-        {{/if}} {{/each}} {{#if rightArrow}}
-        <li><a href="#{{rightMiddle}}">...</a></li>
-        <li><a href="#{{totalPages}}">{{totalPages}}</a></li>
-        <li><a href="#{{rightArrow}}">&gt;</a></li>
-        {{/if}}
-    </ul>
-    {{/pagination}}
-</div>
+    <footer>
+        {{#pagination currentPage pageCount paginatorSize}}
+        <ul class="pagination">
+            {{#if leftArrow}}
+            <li><a href="#{{leftArrow}}">&lt;</a></li>
+            <li><a href="#1">1</a></li>
+            <li><a href="#{{leftMiddle}}">...</a></li>
+            {{/if}} {{#each pages}} {{#if isCurrent}}
+            <li class="active"><a href="#{{page}}">{{page}}</a></li>
+            {{else}}
+            <li><a href="#{{page}}">{{page}}</a></li>
+            {{/if}} {{/each}} {{#if rightArrow}}
+            <li><a href="#{{rightMiddle}}">...</a></li>
+            <li><a href="#{{totalPages}}">{{totalPages}}</a></li>
+            <li><a href="#{{rightArrow}}">&gt;</a></li>
+            {{/if}}
+        </ul>
+        {{/pagination}}
+        <footer>
+</section>

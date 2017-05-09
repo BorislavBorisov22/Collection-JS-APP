@@ -1,27 +1,27 @@
-<div id="bonus">
+<section id="bonus">
     {{#if user.coins}}
-    <div class="row text-success">
-        <div class="col-sm-2">
+    <section class="row text-success">
+        <article class="col-sm-2">
             <h2>
                 <span class="glyphicon glyphicon-euro"></span>
                 <span id="coins-count">{{user.coins}}</span>
             </h2>
-        </div>
-    </div>
+        </article>
+    </section>
     {{/if}}
-    <div class="row">
-        <div class="col-sm-2 col-sm-push-1">
+    <article class="row">
+        <aside class="col-sm-2 col-sm-push-1">
             <button id="btn-paid-bonus" class="btn btn-primary btn-lg">Spin {{spinPrice}}$</button>
-        </div>
+        </aside>
 
-        <div class="col-sm-5 col-sm-offset-1" id="wheel-container">
+        <section class="col-sm-5 col-sm-offset-1" id="wheel-container">
 
             <img id="wheel-pointer" src="./styles/images/wheel-pointer.png" alt="wheel-pointer">
             <img id="wheel" src="./styles/images/wheel.png" alt="wheel">
-        </div>
+        </section>
 
-        <div class="col-sm-1 col-sm-offset-2">
+        <aside class="col-sm-1 col-sm-offset-2">
             <button id="btn-free-bonus" class="btn btn-success btn-lg">Free spin</button>
-        </div>
-    </div>
-</div>
+        </aside>
+    </article>
+</section>

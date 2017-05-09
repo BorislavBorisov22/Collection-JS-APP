@@ -1,11 +1,12 @@
-<div class="row">
-    <div class="col-sm-12">
-        {{#if this.length}} {{#each this}}
-        <div data-player-name="{{name}}" class="player-card album-card {{color}} {{#if purchased}}purchased{{/if}}">
+<section id="add-to-squad-container" class="row">
+    <section class="col-sm-12">
+        {{#each this.players}}
+        <article data-player-name="{{name}}" class="scaled player-card album-card {{color}}">
             <img class="headshot-img" src="{{headshot.medImgUrl}}" alt="{{name}}">
             <p class="position">{{position}}</p>
             <img class="club-img" src="{{club.imageUrls.normal.medium}}" alt="{{club.name}}">
             <img class="nation-img" src="{{nation.imageUrls.medium}}" alt="{{nation.name}}">
+
             <section class="details">
                 <p class="name">{{name}}</p>
                 <section class="additional-player-info">
@@ -13,11 +14,9 @@
                     <span class="text-warning" href="#">Rating <span class="badge">{{rating}}</span></span><br>
                     <span class="text-warning" href="#">Potential <span class="badge">{{potential}}</span></span><br>
                 </section>
-                <a href="#/players/sell/{{id}}" class="btn btn-danger btn-sm btn-sell-player">Sell</a>
+                <a href="#/squad/add/{{id}}/{{../addPosition}}" class="btn btn-success btn-sm btn-sell-player">Add</a>
             </section>
-        </div>
-        {{/each }} {{else}}
-        <h3 class="text-danger text-center">You currently have no players added in your collection!</h3>
-        {{/if}}
-    </div>
-</div>
+        </article>
+        {{/each}}
+    </section>
+</section>
