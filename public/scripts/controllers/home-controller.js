@@ -6,16 +6,12 @@ import { utils } from 'utils';
 const $appContainer = $('#container');
 
 const homeController = {
-    check(params) {
-        const { category } = params;
+    show(params) {
 
-        $appContainer.html(category);
-
-        templateLoader.load('home')
+        return templateLoader.load('home')
             .then((template) => {
                 $appContainer.html(template());
                 utils.toggleUserInfoDisplay();
-                utils.navbarSetColor('inverse');
             });
     }
 };

@@ -11,7 +11,7 @@ import { utils } from 'utils';
 const router = new Sammy(function() {
     this.before(utils.toggleUserInfoDisplay);
     this.before(utils.setToastrPos);
-    this.before(() => utils.navbarSetColor('default'));
+    // this.before(() => utils.navbarSetColor('default'));
 
     this.get('/#', (context) => {
         context.redirect('#/home');
@@ -19,7 +19,7 @@ const router = new Sammy(function() {
 
     this.get('#/home', (context) => {
         utils.navbarSetActive('home');
-        homeController.check(context);
+        homeController.show(context);
     });
 
     this.get('#/register', (context) => {
