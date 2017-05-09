@@ -14,31 +14,28 @@ const userController = {
             return;
         }
 
-        templateLoader.load('login')
+        return templateLoader.load('login')
             .then((template) => {
-                $container.html(template());
+                $('#container').html(template());
+                $('#login-form').on('submit', () => { userController.submitLogin(context); });
+            });
+    },
+    submitLogin(context) {
+        const username = $('#input-username').val();
+        const password = $('#input-password').val();
 
-                $('#login-form').on('submit', function() {
-                    const $this = $(this);
+        const user = {
+            username,
+            password
+        };
 
-                    const username = $('#input-username').val();
-                    const password = $('#input-password').val();
-
-                    const user = {
-                        username,
-                        password
-                    };
-
-                    userData.userLogin(user)
-                        .then((data) => {
-                            notificator.success(`User ${username} logged successfully!`);
-                            context.redirect('#/home');
-                        })
-                        .catch(() => {
-                            notificator.error('Invalid username or password!');
-                            utils.disableButtonFor($('#btn-login'), 5000);
-                        });
-                });
+        return userData.userLogin(user)
+            .then((data) => {
+                notificator.success(`User ${username} logged successfully!`);
+                context.redirect('#/home');
+            }, () => {
+                notificator.error('Invalid username or password!');
+                utils.disableButtonFor($('#btn-login'), 5000);
             });
     },
     register(context) {
@@ -46,46 +43,46 @@ const userController = {
             return;
         }
 
-        templateLoader.load('register')
+        return templateLoader.load('register')
             .then((template) => {
                 $('#container').html(template());
 
-                $('#register-form').on('submit', function() {
-                    const username = $('#input-username').val(),
-                        password = $('#input-password').val(),
-                        passwordRepeat = $('#input-password-repeat').val();
+                $('#register-form').on('submit', () => { userController.submitRegister(context); });
+            });
+    },
+    submitRegister(context) {
+        const username = $('#input-username').val(),
+            password = $('#input-password').val(),
+            passwordRepeat = $('#input-password-repeat').val();
 
-                    const user = {
-                        username,
-                        password,
-                        coins: INITIAL_USER_COINS,
-                        purchasedPlayers: [],
-                        squad: {}
-                    };
+        const user = {
+            username,
+            password,
+            coins: INITIAL_USER_COINS,
+            purchasedPlayers: [],
+            squad: {}
+        };
 
-                    const promises = [
-                        validator.isValidUsername(username),
-                        validator.arePasswordsMatching(password, passwordRepeat),
-                        validator.isValidPassword(password),
-                    ];
+        const promises = [
+            validator.isValidUsername(username),
+            validator.arePasswordsMatching(password, passwordRepeat),
+            validator.isValidPassword(password),
+        ];
 
-                    Promise.all(promises)
-                        .then(() => {
-                            return userData.userRegister(user);
-                        })
-                        .then(() => {
-                            notificator.success('', `User ${username} registered successfully`);
-                            context.redirect('#/home');
-                        })
-                        .catch((errorMessage) => {
-                            if (errorMessage.getResponseHeader) {
-                                errorMessage = `User with username ${username} already exists`;
-                            }
+        return Promise.all(promises)
+            .then(() => {
+                return userData.userRegister(user);
+            })
+            .then(() => {
+                notificator.success('', `User ${username} registered successfully`);
+                context.redirect('#/home');
+            }, (errorMessage) => {
+                if (errorMessage.getResponseHeader) {
+                    errorMessage = `User with username ${username} already exists`;
+                }
 
-                            notificator.error(errorMessage);
-                            utils.disableButtonFor($('#btn-register'), 5000);
-                        });
-                });
+                notificator.error(errorMessage);
+                utils.disableButtonFor($('#btn-register'), 5000);
             });
     },
     logout(context) {
@@ -93,12 +90,11 @@ const userController = {
             return;
         }
 
-        userData.userLogout()
+        return userData.userLogout()
             .then(() => {
                 notificator.success('You have logged out successfully!');
                 context.redirect('#/home');
-            })
-            .catch(() => {
+            }, () => {
                 notificator.error('Please try again in a few moments', 'There was a problem logging out!');
             });
     }
